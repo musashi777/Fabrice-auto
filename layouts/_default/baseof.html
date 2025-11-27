@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ block "title" . }}{{ .Title }} – {{ .Site.Title }}{{ end }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{ if .IsHome }}
+    <meta name="description" content="{{ .Site.Params.description }}" />
+  {{ else if .Params.description }}
+    <meta name="description" content="{{ .Params.description }}" />
+  {{ end }}
+  <meta property="og:title" content="{{ .Title }} – {{ .Site.Title }}" />
+  <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <link rel="stylesheet" href="/css/style.css">
+  {{ hugo.Generator }}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <a href="{{ "/" | relURL }}">
+          <span class="logo-main">Fabrice Auto</span>
+          <span class="logo-sub">Nettoyage & rénovation esthétique</span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="{{ "/" | relURL }}">Accueil</a>
+        <a href="{{ "/profil/" | relURL }}">Profil</a>
+        <a href="{{ "/services/" | relURL }}">Services</a>
+        <a href="{{ "/articles/" | relURL }}">Articles</a>
+        <a href="{{ "/contact/" | relURL }}">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; {{ now.Year }} {{ .Site.Title }} – Marseille</p>
+      <p><a href="tel:+33614031995">06 14 03 19 95</a> · <a href="mailto:fabjouit@gmail.com">fabjouit@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <!-- Import du CSS correctif (Phase 2) -->
+  <link rel="stylesheet" href="/css/custom-fixes.css">
+
+  <!-- Import du bouton WhatsApp -->
+  {{ partial "whatsapp-btn.html" . }}
+</body>
+</html>

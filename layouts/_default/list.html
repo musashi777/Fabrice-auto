@@ -1,0 +1,22 @@
+{{ define "title" }}{{ .Title }} – {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+  {{ if .IsHome }}
+    {{ .Content }}
+  {{ else }}
+    <article class="page">
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+
+      {{ if .Pages }}
+        <ul class="page-list">
+          {{ range .Pages }}
+            <li>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </article>
+  {{ end }}
+{{ end }}

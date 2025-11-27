@@ -1,0 +1,13 @@
+baseURL = "http://localhost:1313/"
+languageCode = "fr-fr"
+title = "Fabrice Auto Nettoyage & rénovsation esthétique"
+defaultContentLanguage = "fr"
+
+[params]
+  author = "Fabrice Jouit"
+  description = "Nettoyage intérieur, rénovation de phares et remise en beauté esthétique automobile à domicile sur Marseille."
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

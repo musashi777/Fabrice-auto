@@ -1,0 +1,27 @@
+# Hugo
+/public/
+/resources/
+/data/
+/archetypes/
+/static/
+/themes/
+
+# SASS/SCSS
+.sass-cache/
+.vscode/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.DS_Store
+
+# IntelliJ specific files
+.idea/
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
