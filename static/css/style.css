@@ -1,6 +1,13 @@
 :root {
   --font-family-heading: 'Poppins', sans-serif;
   --font-family-body: 'Roboto', sans-serif;
+
+  --color-dark: #111827;
+  --color-text: #374151;
+  --color-accent: #2563eb;
+  --color-background: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-light-text: #f9fafb; /* For text on dark backgrounds */
 }
 
 h1, h2, h3, h4, h5, h6, .logo-main {
@@ -16,13 +23,18 @@ h1, h2, h3, h4, h5, h6, .logo-main {
 body {
   font-family: var(--font-family-body);
   margin: 0;
-  background: #f3f4f6;
-  color: #111827;
+  background: var(--color-background); /* Changed */
+  color: var(--color-text); /* Changed */
   line-height: 1.6;
 }
 
 a {
-  color: inherit;
+  color: var(--color-accent); /* Changed */
+  text-decoration: none; /* Added for consistency */
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .container {
@@ -38,8 +50,8 @@ a {
 /* Header */
 
 .site-header {
-  background: #111827;
-  color: #f9fafb;
+  background: var(--color-dark); /* Changed */
+  color: var(--color-light-text); /* Changed */
   padding: 0.75rem 0;
 }
 
@@ -80,10 +92,10 @@ a {
 /* Page / cartes */
 
 .page {
-  background: #ffffff;
+  background: var(--color-surface); /* Changed */
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06); /* Keeping original shadow for now */
 }
 
 .page h1 {
@@ -126,10 +138,10 @@ a {
 }
 
 .service-card {
-  background: #ffffff;
+  background: var(--color-surface); /* Changed */
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06); /* Keeping original shadow for now */
 }
 
 .service-card img {
@@ -175,38 +187,51 @@ a {
   border-radius: 999px;
   text-decoration: none;
   font-weight: 600;
-  border: 1px solid #111827;
+  border: 1px solid var(--color-dark); /* Changed */
   margin-top: 0.75rem;
   font-size: 0.95rem;
-  background: #ffffff;
+  background: var(--color-surface); /* Changed */
 }
 
 .btn:hover {
-  background: #111827;
-  color: #ffffff;
+  background: var(--color-dark); /* Changed */
+  color: var(--color-light-text); /* Changed */
 }
 
 .btn-whatsapp {
-  background: #25d366;
-  border-color: #25d366;
-  color: #ffffff;
+  background: #25d366; /* Keep original for WhatsApp branding */
+  border-color: #25d366; /* Keep original for WhatsApp branding */
+  color: var(--color-light-text); /* Changed for consistency */
 }
 
 .btn-whatsapp:hover {
   opacity: 0.9;
 }
 
+/* New primary button style */
+.btn-primary {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-light-text);
+}
+.btn-primary:hover {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-light-text);
+}
+
+
 /* Footer */
 
 .site-footer {
-  background: #0b1120;
-  color: #9ca3af;
+  background: var(--color-dark); /* Changed */
+  color: #9ca3af; /* Keeping original for now */
   padding: 1.5rem 0;
   font-size: 0.9rem;
 }
 
 .site-footer a {
-  color: #e5e7eb;
+  color: var(--color-light-text); /* Changed */
   text-decoration: none;
 }
 
@@ -228,13 +253,15 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.page-list a {
+/* The `a` selector at the top will handle this unless overridden */
+/* .page-list a {
   text-decoration: none;
 }
 
 .page-list a:hover {
   text-decoration: underline;
-}
+} */
+
 
 /* Responsive */
 
