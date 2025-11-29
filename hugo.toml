@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://www.le-garage-marseillais.fr/"
 languageCode = "fr-fr"
 title = "Fabrice Auto Nettoyage & rénovsation esthétique"
 defaultContentLanguage = "fr"
