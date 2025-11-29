@@ -13,7 +13,7 @@
   <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ .Permalink }}" />
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="{{ "/css/style.css" | absURL }}">
   {{ hugo.Generator }}
 </head>
 <body>
@@ -49,7 +49,7 @@
   </footer>
 
   <!-- Import du CSS correctif (Phase 2) -->
-  <link rel="stylesheet" href="/css/custom-fixes.css">
+  <link rel="stylesheet" href="{{ "/css/custom-fixes.css" | absURL }}">
 
   <!-- Import du bouton WhatsApp -->
   {{ partial "whatsapp-btn.html" . }}

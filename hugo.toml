@@ -1,5 +1,4 @@
-baseURL = "/"
-relativeURLs = true
+baseURL = "https://fabrice-auto.vercel.app"
 languageCode = "fr-fr"
 title = "Fabrice Auto Nettoyage & rénovation esthétique"
 defaultContentLanguage = "fr"
