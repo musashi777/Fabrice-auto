@@ -87,7 +87,7 @@ title: "Accueil"
 
 </div>
 
-<a href="/services/" class="btn">
+<a href="/services/" class="btn btn-primary">
   Voir le détail des services
 </a>
 </section>
