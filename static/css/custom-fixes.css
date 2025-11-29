@@ -1,0 +1,103 @@
+/* --- Fixes & Design Fabrice Auto --- */
+
+/* 1. Bouton Flottant WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white !important;
+    border-radius: 50px;
+    padding: 12px 24px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-family: sans-serif;
+    transition: all 0.3s ease;
+}
+.whatsapp-float:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+.whatsapp-float svg { fill: white; }
+
+/* 2. Amélioration des Images */
+img {
+    max-width: 100%;       /* Empêche de dépasser l'écran */
+    height: auto;          /* Garde les proportions */
+    border-radius: 12px;   /* Arrondit les angles */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Légère ombre */
+    margin: 20px 0;        /* Espace avant/après */
+    display: block;
+}
+
+/* 3. Lisibilité du Texte */
+p {
+    line-height: 1.6;      /* Aère le texte */
+    color: #333;
+    margin-bottom: 1.5em;
+}
+
+/* 4. Titres et Espacement */
+h2, h3 {
+    color: #2c3e50;        /* Bleu foncé pro */
+    margin-top: 2em;       /* Espace avant les titres */
+    margin-bottom: 0.8em;
+}
+
+/* 5. Listes de Services (Nettoyage) */
+ul {
+    background: #f8f9fa;   /* Fond gris très clair */
+    padding: 20px 20px 20px 40px;
+    border-radius: 8px;
+    border-left: 4px solid #25d366; /* Ligne verte sur le côté */
+}
+li {
+    margin-bottom: 10px;
+}
+
+/* --- Corrections pour la page Services --- */
+
+/* 6. Corriger la marge des images dans les blocs de service */
+/* La règle globale 'img' ajoutait une marge verticale qui cassait l'alignement flex */
+.service-image img {
+    margin: 0;
+}
+
+/* 7. Corriger le style des listes imbriquées */
+/* La règle globale 'ul' appliquait un fond et une bordure à TOUTES les listes */
+.service-text ul ul {
+    background: transparent;
+    border-left: none;
+    padding: 5px 0 5px 25px; /* Indentation plus subtile pour les sous-listes */
+    margin: 0;
+    box-shadow: none;
+}
+
+/* --- Améliorations de Design (Feedback du 26/11) --- */
+
+/* 8. Améliorer la lisibilité des titres h2 */
+.page h2 { /* Cible les h2 dans le contenu principal */
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem; /* Espace après le titre */
+}
+
+/* 9. Rendre le CTA WhatsApp plus visible */
+/* Note : le centrage est plus complexe et nécessite une modification HTML, */
+/* mais on peut déjà augmenter la taille et l'espacement. */
+.btn-whatsapp {
+    padding: 0.9rem 1.8rem; /* Plus grand */
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+/* 10. Comportement mobile déjà correct */
+/* Les blocs .service-block et .profil-header utilisent `flex-wrap: wrap;`, */
+/* ce qui les fait passer en colonne automatiquement sur petit écran. */
+/* Le padding du .container empêche déjà le texte de coller aux bords. */
+/* Aucune règle supplémentaire n'est nécessaire pour le moment. */
