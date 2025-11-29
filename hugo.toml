@@ -1,6 +1,7 @@
-baseURL = "https://www.le-garage-marseillais.fr/"
+baseURL = "/"
+relativeURLs = true
 languageCode = "fr-fr"
-title = "Fabrice Auto Nettoyage & rénovsation esthétique"
+title = "Fabrice Auto Nettoyage & rénovation esthétique"
 defaultContentLanguage = "fr"
 
 [params]
