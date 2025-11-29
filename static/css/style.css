@@ -7,7 +7,18 @@
   --color-accent: #2563eb;
   --color-background: #f3f4f6;
   --color-surface: #ffffff;
-  --color-light-text: #f9fafb; /* For text on dark backgrounds */
+  --color-light-text: #f9fafb;
+
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 3rem;     /* 48px */
+
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --border-color: #e5e7eb;
+  --border-radius: 12px;
 }
 
 h1, h2, h3, h4, h5, h6, .logo-main {
@@ -23,14 +34,14 @@ h1, h2, h3, h4, h5, h6, .logo-main {
 body {
   font-family: var(--font-family-body);
   margin: 0;
-  background: var(--color-background); /* Changed */
-  color: var(--color-text); /* Changed */
+  background: var(--color-background);
+  color: var(--color-text);
   line-height: 1.6;
 }
 
 a {
-  color: var(--color-accent); /* Changed */
-  text-decoration: none; /* Added for consistency */
+  color: var(--color-accent);
+  text-decoration: none;
 }
 
 a:hover {
@@ -40,26 +51,25 @@ a:hover {
 .container {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 var(--spacing-sm);
 }
 
 .site-main {
-  padding: 2rem 0 3rem;
+  padding: var(--spacing-lg) 0 var(--spacing-xl);
 }
 
 /* Header */
-
 .site-header {
-  background: var(--color-dark); /* Changed */
-  color: var(--color-light-text); /* Changed */
-  padding: 0.75rem 0;
+  background: var(--color-dark);
+  color: var(--color-light-text);
+  padding: 0.75rem 0; /* Keeping this specific value for now */
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: var(--spacing-md);
 }
 
 .logo a {
@@ -79,7 +89,7 @@ a:hover {
 }
 
 .main-nav a {
-  margin-left: 1rem;
+  margin-left: var(--spacing-sm);
   text-decoration: none;
   font-size: 0.95rem;
   opacity: 0.9;
@@ -90,27 +100,32 @@ a:hover {
 }
 
 /* Page / cartes */
+.page, .service-card {
+  background: var(--color-surface);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease-in-out;
+}
 
-.page {
-  background: var(--color-surface); /* Changed */
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06); /* Keeping original shadow for now */
+.page:hover, .service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
 
 .page h1 {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 /* Hero accueil */
-
 .hero-inner {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 .hero-text {
@@ -129,36 +144,31 @@ a:hover {
 }
 
 /* Grille services */
-
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 .service-card {
-  background: var(--color-surface); /* Changed */
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06); /* Keeping original shadow for now */
+  padding: var(--spacing-sm); /* Override general card padding for a denser look */
 }
 
 .service-card img {
   max-width: 100%;
-  border-radius: 10px;
-  margin-bottom: 0.75rem;
+  border-radius: 10px; /* Slightly smaller radius than card */
+  margin-bottom: var(--spacing-xs);
 }
 
 /* Blocs image + texte */
-
 .profil-header,
 .service-block {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: var(--spacing-md);
   align-items: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .profil-text,
@@ -175,45 +185,48 @@ a:hover {
 .service-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   display: block;
 }
 
 /* Boutons */
-
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem var(--spacing-md);
   border-radius: 999px;
   text-decoration: none;
   font-weight: 600;
-  border: 1px solid var(--color-dark); /* Changed */
-  margin-top: 0.75rem;
+  border: 1px solid var(--color-dark);
+  margin-top: var(--spacing-xs);
   font-size: 0.95rem;
-  background: var(--color-surface); /* Changed */
+  background: var(--color-surface);
+  transition: all 0.2s ease-in-out;
 }
 
 .btn:hover {
-  background: var(--color-dark); /* Changed */
-  color: var(--color-light-text); /* Changed */
+  background: var(--color-dark);
+  color: var(--color-light-text);
+  text-decoration: none;
 }
 
 .btn-whatsapp {
-  background: #25d366; /* Keep original for WhatsApp branding */
-  border-color: #25d366; /* Keep original for WhatsApp branding */
-  color: var(--color-light-text); /* Changed for consistency */
+  background: #25d366;
+  border-color: #25d366;
+  color: var(--color-light-text);
 }
 
 .btn-whatsapp:hover {
   opacity: 0.9;
+  background: #25d366; /* Keep background on hover */
+  color: var(--color-light-text);
 }
 
-/* New primary button style */
 .btn-primary {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
   color: var(--color-light-text);
 }
+
 .btn-primary:hover {
   background-color: var(--color-dark);
   border-color: var(--color-dark);
@@ -222,16 +235,15 @@ a:hover {
 
 
 /* Footer */
-
 .site-footer {
-  background: var(--color-dark); /* Changed */
-  color: #9ca3af; /* Keeping original for now */
-  padding: 1.5rem 0;
+  background: var(--color-dark);
+  color: #9ca3af;
+  padding: var(--spacing-md) 0;
   font-size: 0.9rem;
 }
 
 .site-footer a {
-  color: var(--color-light-text); /* Changed */
+  color: var(--color-light-text);
   text-decoration: none;
 }
 
@@ -239,32 +251,21 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
 }
 
 /* Liste pages */
-
 .page-list {
   list-style: none;
   padding-left: 0;
 }
 
 .page-list li {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
 }
-
-/* The `a` selector at the top will handle this unless overridden */
-/* .page-list a {
-  text-decoration: none;
-}
-
-.page-list a:hover {
-  text-decoration: underline;
-} */
 
 
 /* Responsive */
-
 @media (max-width: 640px) {
   .header-inner {
     flex-direction: column;
@@ -273,10 +274,10 @@ a:hover {
 
   .main-nav a {
     margin-left: 0;
-    margin-right: 1rem;
+    margin-right: var(--spacing-sm);
   }
 
   .page {
-    padding: 1.5rem;
+    padding: var(--spacing-md);
   }
 }
