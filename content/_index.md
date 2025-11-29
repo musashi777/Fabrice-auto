@@ -6,11 +6,11 @@ title: "Accueil"
 <div class="hero-inner">
 
 <div class="hero-text">
-<h1>Nettoyage intérieur &amp; rénovation esthétique automobile à domicile – Marseille</h1>
+<h1>Soins esthétiques pour votre véhicule, directement chez vous.</h1>
+<p class="hero-subtitle">Nettoyage intérieur complet, rénovation de phares et lustrage carrosserie par un professionnel expérimenté sur Marseille.</p>
 
 <p>
-  Bienvenue, je suis <strong>Fabrice Jouit</strong>, professionnel de l’automobile avec plus de 20 ans
-  d’expérience en carrosserie-peinture et réception atelier chez Renault.
+  Fort de plus de 20 ans d’expérience en carrosserie-peinture, je mets mon expertise au service de votre véhicule.
 </p>
 
 <p>

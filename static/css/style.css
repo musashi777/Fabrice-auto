@@ -126,10 +126,25 @@ a:hover {
   align-items: center;
   gap: var(--spacing-lg);
   margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg) 0; /* More breathing room */
 }
 
 .hero-text {
   flex: 1 1 280px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem; /* Big, impactful headline */
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-dark);
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin-bottom: var(--spacing-md);
 }
 
 .hero-image {
@@ -267,6 +282,10 @@ a:hover {
 
 /* Responsive */
 @media (max-width: 640px) {
+  .hero-text h1 {
+    font-size: 2rem; /* Slightly smaller on mobile */
+  }
+
   .header-inner {
     flex-direction: column;
     align-items: flex-start;
