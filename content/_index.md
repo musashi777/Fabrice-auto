@@ -36,7 +36,7 @@ title: "Accueil"
 </div>
 
 <div class="hero-image">
-  <img src="/images/hero-accueil.png" alt="Fabrice, spécialiste nettoyage et rénovation esthétique automobile" />
+  {{< image src="hero-accueil.png" alt="Fabrice, spécialiste nettoyage et rénovation esthétique automobile" class="hero-image-actual" >}}
 </div>
 
 </div>
@@ -50,7 +50,7 @@ title: "Accueil"
 <div class="services-grid">
 
 <div class="service-card">
-  <img src="/images/service-nettoyage-interieur.png" alt="Nettoyage intérieur complet de voiture" />
+  {{< image src="service-nettoyage-interieur.png" alt="Nettoyage intérieur complet de voiture" >}}
   <h3>Nettoyage intérieur complet</h3>
   <p>
     Aspiration minutieuse de l’habitacle et du coffre, nettoyage des plastiques, tableau de bord,
@@ -59,7 +59,7 @@ title: "Accueil"
 </div>
 
 <div class="service-card">
-  <img src="/images/service-nettoyage-interieur.png" alt="Détachage de sièges et moquettes de voiture" />
+  {{< image src="service-nettoyage-interieur.png" alt="Détachage de sièges et moquettes de voiture" >}}
   <h3>Détachage sièges &amp; moquettes</h3>
   <p>
     Traitement des taches tenaces (boissons, nourriture, vomi, etc.) avec matériel professionnel
@@ -68,7 +68,7 @@ title: "Accueil"
 </div>
 
 <div class="service-card">
-  <img src="/images/service-renovation-phares.png" alt="Rénovation de phares opaques" />
+  {{< image src="service-renovation-phares.png" alt="Rénovation de phares opaques" >}}
   <h3>Rénovation de phares opaques</h3>
   <p>
     Rénovation des optiques ternes ou jaunies pour retrouver une meilleure visibilité et une
@@ -77,7 +77,7 @@ title: "Accueil"
 </div>
 
 <div class="service-card">
-  <img src="/images/service-lustrage-capot.png" alt="Lustrage léger de carrosserie" />
+  {{< image src="service-lustrage-capot.png" alt="Lustrage léger de carrosserie" >}}
   <h3>Lustrage &amp; remise en beauté</h3>
   <p>
     Lustrage léger de certaines zones de carrosserie pour atténuer les micro-rayures et redonner

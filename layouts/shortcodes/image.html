@@ -1,0 +1,41 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $class := .Get "class" }}
+
+{{ if $src }}
+  {{ $image := resources.Get (printf "images/%s" $src) }}
+  {{ if $image }}
+    {{ $webpFormats := slice "480x webp" "800x webp" "1200x webp" "1600x webp" }}
+    {{ $fallbackFormats := slice "480x jpg" "800x jpg" "1200x jpg" "1600x jpg" }}
+
+    {{ $webpSrcset := "" }}
+    {{ range $f := $webpFormats }}
+      {{ $img := $image.Resize $f }}
+      {{ $webpSrcset = printf "%s%s %dw," $webpSrcset $img.Width }}
+    {{ end }}
+
+    {{ $fallbackSrcset := "" }}
+    {{ range $f := $fallbackFormats }}
+      {{ $img := $image.Resize $f }}
+      {{ $fallbackSrcset = printf "%s%s %dw," $fallbackSrcset $img.RelPermalink $img.Width }}
+    {{ end }}
+
+    <picture>
+      <source srcset="{{ trimSuffix "," $webpSrcset }}" type="image/webp" sizes="(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px">
+      <img
+        src="{{ $image.RelPermalink }}"
+        srcset="{{ trimSuffix "," $fallbackSrcset }}"
+        sizes="(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px"
+        alt="{{ $alt }}"
+        class="{{ $class }}"
+        loading="lazy"
+      >
+    </picture>
+  {{ else }}
+    <!-- Fallback if image not found in assets. Use static path (must be adjusted if static folder structure is flat) -->
+    <img src="/images/{{ $src }}" alt="{{ $alt }}" class="{{ $class }}" loading="lazy">
+  {{ end }}
+{{ else }}
+  <!-- Fallback if no src provided -->
+  <p>Error: Image shortcode missing 'src' attribute.</p>
+{{ end }}
