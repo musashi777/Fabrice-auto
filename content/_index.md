@@ -74,8 +74,7 @@ oyage des plastiques, tableau de bord,
 </div>                                                     
                                                            
 <div class="service-card">                                 
-  {{< image src="images/service-nettoyage-interieur.png" al
-t="Détachage de sièges et moquettes de voiture" >}}        
+  {{< image src="images/service-nettoyage-interieur.png" alt="Détachage de sièges et moquettes de voiture" >}}        
   <h3>Détachage sièges &amp; moquettes</h3>                
   <p>                                                      
     Traitement des taches tenaces (boissons, nourriture, vo
