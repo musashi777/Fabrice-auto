@@ -14,7 +14,7 @@ Aujourd’hui, je mets cette expérience au service d’une activité de <strong
 </div>
 
   <div class="profil-image">
-    <img src="/images/profil-atelier-tablette.png" alt="Fabrice en atelier carrosserie avec tablette" />
+    {{< image src="images/profil-atelier-tablette.png" alt="Fabrice en atelier carrosserie avec tablette" >}}
   </div>
 
 </div>
