@@ -4,9 +4,13 @@
 */}}
 {{ $src := .src }}
 {{ $alt := .alt | default "" }}
+{{ warnf "Partial image-service - src from context: %s" $src }}
 
 {{ if $src }}
-  {{ $original := resources.Get (printf "images/%s" $src) }}
+  {{ $imagePath := printf "images/%s" $src }}
+  {{ warnf "Partial image-service - constructed image path: %s" $imagePath }}
+  {{ $original := resources.Get $imagePath }}
+  {{ warnf "Partial image-service - original resource: %v" $original }}
   {{ if $original }}
     {{ $widths := slice 480 800 1200 }}
     {{ $fallbackFormat := "jpg" }}
