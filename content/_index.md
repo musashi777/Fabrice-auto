@@ -49,9 +49,7 @@ Modèle%20:%0A-%20Prestation%20souhaitée%20:%0A-%20Ville%20:
 </div>                                                     
                                                            
 <div class="hero-image">                                   
-  {{< image src="images/hero-accueil.png" alt="Fabrice, spé
-cialiste nettoyage et rénovation esthétique automobile" cla
-ss="hero-image-actual" >}}                                 
+  {{< image src="images/hero-accueil.png" alt="Fabrice, spécialiste nettoyage et rénovation esthétique automobile" class="hero-image-actual" >}}                                 
 </div>                                                     
                                                            
 </div>                                                     
