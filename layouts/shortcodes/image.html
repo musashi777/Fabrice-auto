@@ -1,41 +1,59 @@
+{{/*
+  Shortcode for responsive, optimized images.
+  Usage: {{< image src="image.jpg" alt="Description" >}}
+*/}}
 {{ $src := .Get "src" }}
-{{ $alt := .Get "alt" }}
-{{ $class := .Get "class" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $class := .Get "class" | default "" }}
 
 {{ if $src }}
-  {{ $image := resources.Get (printf "images/%s" $src) }}
-  {{ if $image }}
-    {{ $webpFormats := slice "480x webp" "800x webp" "1200x webp" "1600x webp" }}
-    {{ $fallbackFormats := slice "480x jpg" "800x jpg" "1200x jpg" "1600x jpg" }}
+  {{ $original := resources.Get (printf "images/%s" $src) }}
+  {{ if $original }}
+    {{/* Define image widths and formats */}}
+    {{ $widths := slice 480 800 1200 1600 }}
+    {{ $fallbackFormat := "jpg" }}
 
-    {{ $webpSrcset := "" }}
-    {{ range $f := $webpFormats }}
-      {{ $img := $image.Resize $f }}
-      {{ $webpSrcset = printf "%s%s %dw," $webpSrcset $img.Width }}
+    {{/* --- WebP Sources --- */}}
+    {{ $webpSrcs := slice }}
+    {{ range $widths }}
+      {{ $img := $original.Resize (printf "%dx webp" .) }}
+      {{ $webpSrcs = $webpSrcs | append (printf "%s %dw" $img.RelPermalink .) }}
     {{ end }}
+    {{ $webpSrcset := delimit $webpSrcs ", " }}
 
-    {{ $fallbackSrcset := "" }}
-    {{ range $f := $fallbackFormats }}
-      {{ $img := $image.Resize $f }}
-      {{ $fallbackSrcset = printf "%s%s %dw," $fallbackSrcset $img.RelPermalink $img.Width }}
+    {{/* --- Fallback Sources (JPEG) --- */}}
+    {{ $fallbackSrcs := slice }}
+    {{ range $widths }}
+      {{ $img := $original.Resize (printf "%dx %s" . $fallbackFormat) }}
+      {{ $fallbackSrcs = $fallbackSrcs | append (printf "%s %dw" $img.RelPermalink .) }}
     {{ end }}
+    {{ $fallbackSrcset := delimit $fallbackSrcs ", " }}
+
+    {{/* Get the smallest image for the default src attribute */}}
+    {{ $smallestFallback := $original.Resize (printf "%dx %s" (index $widths 0) $fallbackFormat) }}
 
     <picture>
-      <source srcset="{{ trimSuffix "," $webpSrcset }}" type="image/webp" sizes="(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px">
+      <source
+        type="image/webp"
+        srcset="{{ $webpSrcset }}"
+        sizes="(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px">
+      <source
+        type="image/jpeg"
+        srcset="{{ $fallbackSrcset }}"
+        sizes="(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px">
       <img
-        src="{{ $image.RelPermalink }}"
-        srcset="{{ trimSuffix "," $fallbackSrcset }}"
-        sizes="(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px"
+        src="{{ $smallestFallback.RelPermalink }}"
         alt="{{ $alt }}"
-        class="{{ $class }}"
+        {{ with $class }}class="{{ . }}"{{ end }}
         loading="lazy"
+        decoding="async"
+        width="{{ $original.Width }}"
+        height="{{ $original.Height }}"
       >
     </picture>
   {{ else }}
-    <!-- Fallback if image not found in assets. Use static path (must be adjusted if static folder structure is flat) -->
-    <img src="/images/{{ $src }}" alt="{{ $alt }}" class="{{ $class }}" loading="lazy">
+    <p>Image not found in assets: {{ $src }}</p>
   {{ end }}
 {{ else }}
-  <!-- Fallback if no src provided -->
-  <p>Error: Image shortcode missing 'src' attribute.</p>
+  <p>Error: Image shortcode requires a 'src' attribute.</p>
 {{ end }}
