@@ -62,7 +62,7 @@ a:hover {
 .site-header {
   background: var(--color-dark);
   color: var(--color-light-text);
-  padding: 0.75rem 0; /* Keeping this specific value for now */
+  padding: 0.75rem 0;
 }
 
 .header-inner {
@@ -126,7 +126,7 @@ a:hover {
   align-items: center;
   gap: var(--spacing-lg);
   margin-bottom: var(--spacing-lg);
-  padding: var(--spacing-lg) 0; /* More breathing room */
+  padding: var(--spacing-lg) 0;
 }
 
 .hero-text {
@@ -134,7 +134,7 @@ a:hover {
 }
 
 .hero-text h1 {
-  font-size: 2.5rem; /* Big, impactful headline */
+  font-size: 2.5rem;
   line-height: 1.2;
   margin-bottom: var(--spacing-sm);
   color: var(--color-dark);
@@ -167,12 +167,23 @@ a:hover {
 }
 
 .service-card {
-  padding: var(--spacing-sm); /* Override general card padding for a denser look */
+  padding: var(--spacing-sm);
+}
+
+.service-card p {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 1.5;
+  max-height: calc(1.5 * 3em);
 }
 
 .service-card img {
   max-width: 100%;
-  border-radius: 10px; /* Slightly smaller radius than card */
+  border-radius: 10px;
   margin-bottom: var(--spacing-xs);
 }
 
@@ -232,7 +243,7 @@ a:hover {
 
 .btn-whatsapp:hover {
   opacity: 0.9;
-  background: #25d366; /* Keep background on hover */
+  background: #25d366;
   color: var(--color-light-text);
 }
 
@@ -283,7 +294,7 @@ a:hover {
 /* Responsive */
 @media (max-width: 640px) {
   .hero-text h1 {
-    font-size: 2rem; /* Slightly smaller on mobile */
+    font-size: 2rem;
   }
 
   .header-inner {
