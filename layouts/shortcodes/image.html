@@ -7,7 +7,7 @@
 {{ $class := .Get "class" | default "" }}
 
 {{ if $src }}
-  {{ $original := resources.Get (printf "images/%s" $src) }}
+  {{ $original := resources.Get $src }}
   {{ if $original }}
     {{/* Define image widths and formats */}}
     {{ $widths := slice 480 800 1200 1600 }}
