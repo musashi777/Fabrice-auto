@@ -5,12 +5,15 @@
 {{ $src := .src }}
 {{ $alt := .alt | default "" }}
 {{ warnf "Partial image-service - src from context: %s" $src }}
-
-{{ if $src }}
-  {{ $imagePath := printf "images/%s" $src }}
-  {{ warnf "Partial image-service - constructed image path: %s" $imagePath }}
-  {{ $original := resources.Get $imagePath }}
-  {{ warnf "Partial image-service - original resource: %v" $original }}
+{{ $imagePath := printf "images/%s" $src }}
+{{ warnf "Partial image-service - constructed image path: %s" $imagePath }}
+{{ $original := resources.Get $imagePath }}
+{{ warnf "Partial image-service - original resource exists: %t" (isset $original "RelPermalink") }}
+{{ if $original }}
+  {{ warnf "Partial image-service - Resource RelPermalink: %s" $original.RelPermalink }}
+  {{ warnf "Partial image-service - Resource MediaType: %s" $original.MediaType }}
+  {{ warnf "Partial image-service - Resource Name: %s" $original.Name }}
+{{ end }}
   {{ if $original }}
     {{ $widths := slice 480 800 1200 }}
     {{ $fallbackFormat := "jpg" }}
