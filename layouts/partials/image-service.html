@@ -25,7 +25,7 @@
     {{ $webpSrcs := slice }}
     {{ range $widths }}
       {{ $img := $original.Resize (printf "%dx webp" .) }}
-      {{ $webpSrcs = $webpSrcs | append (printf "%s %dw" $img.RelPermalink .) }}
+      {{ $webpSrcs = $webpSrcs | append (printf "%s %dw" $img.RelPermalink $img.Width) }}
     {{ end }}
     {{ $webpSrcset := delimit $webpSrcs ", " }}
 
@@ -33,7 +33,7 @@
     {{ $fallbackSrcs := slice }}
     {{ range $widths }}
       {{ $img := $original.Resize (printf "%dx %s" . $fallbackFormat) }}
-      {{ $fallbackSrcs = $fallbackSrcs | append (printf "%s %dw" $img.RelPermalink .) }}
+      {{ $fallbackSrcs = $fallbackSrcs | append (printf "%s %dw" $img.RelPermalink $img.Width) }}
     {{ end }}
     {{ $fallbackSrcset := delimit $fallbackSrcs ", " }}
 
