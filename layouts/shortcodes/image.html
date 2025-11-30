@@ -8,6 +8,8 @@
 
 {{ if $src }}
   {{ $original := resources.Get $src }}
+    {{ warnf "Image shortcode - src: %s" $src }}
+    {{ warnf "Image shortcode - original resource: %v" $original }}
   {{ if $original }}
     {{/* Define image widths and formats */}}
     {{ $widths := slice 480 800 1200 1600 }}
