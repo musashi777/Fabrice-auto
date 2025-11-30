@@ -1,0 +1,51 @@
+{{/*
+  Partial for responsive, optimized images within templates.
+  Context (.): dict "src" "alt"
+*/}}
+{{ $src := .src }}
+{{ $alt := .alt | default "" }}
+
+{{ if $src }}
+  {{ $original := resources.Get (printf "images/%s" $src) }}
+  {{ if $original }}
+    {{ $widths := slice 480 800 1200 }}
+    {{ $fallbackFormat := "jpg" }}
+
+    {{ $webpSrcs := slice }}
+    {{ range $widths }}
+      {{ $img := $original.Resize (printf "%dx webp" .) }}
+      {{ $webpSrcs = $webpSrcs | append (printf "%s %dw" .RelPermalink .) }}
+    {{ end }}
+    {{ $webpSrcset := delimit $webpSrcs ", " }}
+
+    {{ $fallbackSrcs := slice }}
+    {{ range $widths }}
+      {{ $img := $original.Resize (printf "%dx %s" . $fallbackFormat) }}
+      {{ $fallbackSrcs = $fallbackSrcs | append (printf "%s %dw" .RelPermalink .) }}
+    {{ end }}
+    {{ $fallbackSrcset := delimit $fallbackSrcs ", " }}
+
+    {{ $smallestFallback := $original.Resize (printf "%dx %s" (index $widths 0) $fallbackFormat) }}
+
+    <picture>
+      <source
+        type="image/webp"
+        srcset="{{ $webpSrcset }}"
+        sizes="(max-width: 600px) 480px, 800px">
+      <source
+        type="image/jpeg"
+        srcset="{{ $fallbackSrcset }}"
+        sizes="(max-width: 600px) 480px, 800px">
+      <img
+        src="{{ $smallestFallback.RelPermalink }}"
+        alt="{{ $alt }}"
+        loading="lazy"
+        decoding="async"
+        width="{{ $original.Width }}"
+        height="{{ $original.Height }}"
+      >
+    </picture>
+  {{ else }}
+    <p>Image not found: {{ $src }}</p>
+  {{ end }}
+{{ end }}

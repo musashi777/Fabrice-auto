@@ -45,56 +45,6 @@ title: "Accueil"
 ---
 
 <section>
-<h2>Mes prestations principales</h2>
-
-<div class="services-grid">
-
-<div class="service-card">
-  {{< image src="images/service-nettoyage-interieur.png" alt="Nettoyage intérieur complet de voiture" >}}
-  <h3>Nettoyage intérieur complet</h3>
-  <p>
-    Aspiration minutieuse de l’habitacle et du coffre, nettoyage des plastiques, tableau de bord,
-    consoles, portes et vitres intérieures.
-  </p>
-</div>
-
-<div class="service-card">
-  {{< image src="images/service-nettoyage-interieur.png" alt="Détachage de sièges et moquettes de voiture" >}}
-  <h3>Détachage sièges &amp; moquettes</h3>
-  <p>
-    Traitement des taches tenaces (boissons, nourriture, vomi, etc.) avec matériel professionnel
-    (injecteur-extracteur, vapeur).
-  </p>
-</div>
-
-<div class="service-card">
-  {{< image src="images/service-renovation-phares.png" alt="Rénovation de phares opaques" >}}
-  <h3>Rénovation de phares opaques</h3>
-  <p>
-    Rénovation des optiques ternes ou jaunies pour retrouver une meilleure visibilité et une
-    présentation plus esthétique.
-  </p>
-</div>
-
-<div class="service-card">
-  {{< image src="images/service-lustrage-capot.png" alt="Lustrage léger de carrosserie" >}}
-  <h3>Lustrage &amp; remise en beauté</h3>
-  <p>
-    Lustrage léger de certaines zones de carrosserie pour atténuer les micro-rayures et redonner
-    de la brillance.
-  </p>
-</div>
-
-</div>
-
-<a href="/services/" class="btn btn-primary">
-  Voir le détail des services
-</a>
-</section>
-
----
-
-<section>
 <h2>Pourquoi me confier votre véhicule ?</h2>
 
 <h3>20+ ans d’expérience en carrosserie-peinture</h3>
