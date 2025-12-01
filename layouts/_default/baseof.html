@@ -20,6 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ "/css/style.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "/css/custom-fixes.css" | absURL }}">
   {{ hugo.Generator }}
 </head>
 <body>
@@ -54,10 +55,52 @@
     </div>
   </footer>
 
-  <!-- Import du CSS correctif (Phase 2) -->
-  <link rel="stylesheet" href="{{ "/css/custom-fixes.css" | absURL }}">
 
   <!-- Import du bouton WhatsApp -->
   {{ partial "whatsapp-btn.html" . }}
+
+  <a href="#" class="back-to-top-btn">↑</a>
+
+  <script>
+    const backToTopBtn = document.querySelector(".back-to-top-btn");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) { // Show button after scrolling 200px
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
+    });
+
+    backToTopBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    // Fade-in sections on scroll
+    const fadeInSections = document.querySelectorAll(".fade-in-section");
+
+    const observerOptions = {
+      root: null, // viewport
+      rootMargin: "0px",
+      threshold: 0.1 // 10% of element visible
+    };
+
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target); // Stop observing once visible
+        }
+      });
+    }, observerOptions);
+
+    fadeInSections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+  </script>
 </body>
 </html>

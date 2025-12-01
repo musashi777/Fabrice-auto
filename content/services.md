@@ -61,7 +61,7 @@ Demander un devis sur WhatsApp
 <div class="service-block">
   <div class="service-image">
     <!-- Même image pour l’instant, tu pourras en mettre une autre plus tard -->
-    {{< image src="images/detache-siege-et-moquettes.png" alt="Détachage de sièges et moquettes" >}}
+    {{< image src="images/nettoyage-siege-et-moquettes.png" alt="Détachage de sièges et moquettes" >}}
   </div>
   <div class="service-text">
 <h3>Objectif</h3>
@@ -94,7 +94,7 @@ Demander un devis sur WhatsApp
 
 <div class="service-block">
   <div class="service-image">
-    {{< image src="images/service-nettoyage-interieur.png" alt="Traitement des mauvaises odeurs" >}}
+    {{< image src="images/nettoyage-interieur-voiture-marseille.jpg" alt="Traitement des mauvaises odeurs" >}}
   </div>
   <div class="service-text">
 <h3>Types d’odeurs traitées</h3>

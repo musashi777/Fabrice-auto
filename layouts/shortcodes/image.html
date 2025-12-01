@@ -1,60 +1,14 @@
-{{/*
-  Shortcode for responsive, optimized images.
-  Usage: {{< image src="image.jpg" alt="Description" >}}
-*/}}
 {{ $src := .Get "src" }}
 {{ $alt := .Get "alt" | default "" }}
 {{ $class := .Get "class" | default "" }}
 
 {{ if $src }}
-  {{ $original := resources.Get $src }}
-
-  {{ if $original }}
-    {{/* Define image widths and formats */}}
-    {{ $widths := slice 480 800 1200 1600 }}
-    {{ $fallbackFormat := "jpg" }}
-
-    {{/* --- WebP Sources --- */}}
-    {{ $webpSrcs := slice }}
-    {{ range $widths }}
-      {{ $img := $original.Resize (printf "%dx webp" .) }}
-      {{ $webpSrcs = $webpSrcs | append (printf "%s %dw" $img.RelPermalink .) }}
-    {{ end }}
-    {{ $webpSrcset := delimit $webpSrcs ", " }}
-
-    {{/* --- Fallback Sources (JPEG) --- */}}
-    {{ $fallbackSrcs := slice }}
-    {{ range $widths }}
-      {{ $img := $original.Resize (printf "%dx %s" . $fallbackFormat) }}
-      {{ $fallbackSrcs = $fallbackSrcs | append (printf "%s %dw" $img.RelPermalink .) }}
-    {{ end }}
-    {{ $fallbackSrcset := delimit $fallbackSrcs ", " }}
-
-    {{/* Get the smallest image for the default src attribute */}}
-    {{ $smallestFallback := $original.Resize (printf "%dx %s" (index $widths 0) $fallbackFormat) }}
-
-    <picture>
-      <source
-        type="image/webp"
-        srcset="{{ $webpSrcset }}"
-        sizes="(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px">
-      <source
-        type="image/jpeg"
-        srcset="{{ $fallbackSrcset }}"
-        sizes="(max-width: 600px) 480px, (max-width: 1000px) 800px, 1200px">
-      <img
-        src="{{ $smallestFallback.RelPermalink }}"
-        alt="{{ $alt }}"
-        {{ with $class }}class="{{ . }}"{{ end }}
-        loading="lazy"
-        decoding="async"
-        width="{{ $original.Width }}"
-        height="{{ $original.Height }}"
-      >
-    </picture>
+  {{ $image := resources.Get $src }}
+  {{ if $image }}
+    <img src="{{ $image.RelPermalink }}" alt="{{ $alt }}" class="{{ $class }}">
   {{ else }}
-    <p>Image not found in assets: {{ $src }}</p>
+    <p style="color: red;">Image non trouvée : {{ $src }}</p>
   {{ end }}
 {{ else }}
-  <p>Error: Image shortcode requires a 'src' attribute.</p>
+  <p style="color: red;">Attribut 'src' manquant.</p>
 {{ end }}

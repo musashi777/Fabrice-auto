@@ -2,7 +2,7 @@
 title: "Accueil"                                           
 ---                                                        
                                                            
-<section class="hero">                                     
+<section class="hero fade-in-section">                                     
 <div class="hero-inner">                                   
                                                            
 <div class="hero-text">                                    
@@ -49,7 +49,7 @@ Modèle%20:%0A-%20Prestation%20souhaitée%20:%0A-%20Ville%20:
 </div>                                                     
                                                            
 <div class="hero-image">                                   
-  {{< image src="images/hero-accueil.png" alt="Fabrice, spécialiste nettoyage et rénovation esthétique automobile" class="hero-image-actual" >}}                                 
+  {{< figure src="images/hero-accueil.png" alt="Fabrice, spécialiste nettoyage et rénovation esthétique automobile" class="hero-image-actual" loading="lazy" >}}                                 
 </div>                                                     
                                                            
 </div>                                                     
@@ -57,57 +57,44 @@ Modèle%20:%0A-%20Prestation%20souhaitée%20:%0A-%20Ville%20:
                                                            
 ---                                                        
                                                            
-<section>                                                  
+<section class="fade-in-section">                                                  
 <h2>Mes prestations principales</h2>                       
                                                            
 <div class="services-grid">                                
                                                            
 <div class="service-card">                                 
-  {{< image src="images/service-nettoyage-interieur.png" alt="Nettoyage intérieur complet de voiture" >}}             
-  <h3>Nettoyage intérieur complet</h3>                     
-  <p>                                                      
-    Aspiration minutieuse de l’habitacle et du coffre, nett
-oyage des plastiques, tableau de bord,                     
-    consoles, portes et vitres intérieures.                
-  </p>                                                     
+  {{< figure src="images/nettoyage-interieur-voiture-marseille.jpg" alt="Nettoyage intérieur complet de voiture" loading="lazy" >}}             
+  <div class="service-card-text">
+    <h3>Nettoyage intérieur complet</h3>                     
+    <p>Aspiration minutieuse de l’habitacle et du coffre, nettoyage des plastiques, tableau de bord, consoles, portes et vitres intérieures.</p>
+  </div>                                                     
 </div>                                                     
                                                            
 <div class="service-card">                                 
                                                            
-  {{< image src="images/service-nettoyage-interieur.png" alt="Détachage de sièges et moquettes de voiture" >}}        
+  {{< figure src="images/detache-siege.png" alt="Détachage de sièges et moquettes de voiture" loading="lazy" >}}        
                                                            
-  <h3>Détachage sièges &amp; moquettes</h3>                
-                                                           
-  <p>                                                      
-                                                           
-    Traitement des taches tenaces (boissons, nourriture, vo
-                                                           
-mi, etc.) avec matériel professionnel                      
-                                                           
-    (injecteur-extracteur, vapeur).                        
-                                                           
-  </p>                                                     
+  <div class="service-card-text">
+    <h3>Détachage sièges &amp; moquettes</h3>                
+    <p>Traitement des taches tenaces (boissons, nourriture, vomi, etc.) avec matériel professionnel (injecteur-extracteur, vapeur).</p>
+  </div>                                                     
                                                            
 </div>                                                     
                                                            
 <div class="service-card">                                 
-  {{< image src="images/service-renovation-phares.png" alt="Rénovation de phares opaques" >}}                         
-  <h3>Rénovation de phares opaques</h3>                    
-  <p>                                                      
-    Rénovation des optiques ternes ou jaunies pour retrouve
-r une meilleure visibilité et une                          
-    présentation plus esthétique.                          
-  </p>                                                     
+  {{< figure src="images/service-renovation-phares.png" alt="Rénovation de phares opaques" loading="lazy" >}}                         
+  <div class="service-card-text">
+    <h3>Rénovation de phares opaques</h3>                    
+    <p>Rénovation des optiques ternes ou jaunies pour retrouver une meilleure visibilité et une présentation plus esthétique.</p>
+  </div>                                                     
 </div>                                                     
                                                            
 <div class="service-card">                                 
-  {{< image src="images/service-lustrage-capot.png" alt="Lustrage léger de carrosserie" >}}                           
-  <h3>Lustrage &amp; remise en beauté</h3>                 
-  <p>                                                      
-    Lustrage léger de certaines zones de carrosserie pour a
-tténuer les micro-rayures et redonner                      
-    de la brillance.                                       
-  </p>                                                     
+  {{< figure src="images/service-lustrage-capot.png" alt="Lustrage léger de carrosserie" loading="lazy" >}}                           
+  <div class="service-card-text">
+    <h3>Lustrage &amp; remise en beauté</h3>                 
+    <p>Lustrage léger de certaines zones de carrosserie pour atténuer les micro-rayures et redonner de la brillance.</p>
+  </div>                                                     
 </div>                                                     
                                                            
 </div>                                                     
@@ -119,7 +106,7 @@ tténuer les micro-rayures et redonner
                                                            
 ---                                                        
                                                            
-<section>                                                  
+<section class="fade-in-section">                                                  
 <h2>Pourquoi me confier votre véhicule ?</h2>              
                                                            
 <h3>20+ ans d’expérience en carrosserie-peinture</h3>      
@@ -131,38 +118,33 @@ g>, en atelier carrosserie-peinture et réception clientèle.
 </p>                                                       
                                                            
 <ul>                                                       
-  <li>comprendre les contraintes techniques des véhicules</
-li>                                                        
-  <li>respecter les matériaux (tissus, plastiques, vernis)<
-/li>                                                       
-  <li>assurer un travail <strong>propre, rigoureux et sécur
-isé</strong></li>                                          
+  <li><span class="list-icon"></span>comprendre les contraintes techniques des véhicules</li>                                                        
+  <li><span class="list-icon"></span>respecter les matériaux (tissus, plastiques, vernis)</li>                                                       
+  <li><span class="list-icon"></span>assurer un travail <strong>propre, rigoureux et sécurisé</strong></li>                                          
 </ul>                                                      
                                                            
 <h3>Une approche mobile et pratique</h3>                   
                                                            
 <ul>                                                       
-  <li>Intervention sur votre lieu de vie ou de travail</li>
-  <li>Organisation des prestations en fonction de vos contr
-aintes</li>                                                
-  <li>Limitation de l’immobilisation du véhicule</li>      
+  <li><span class="list-icon"></span>Intervention sur votre lieu de vie ou de travail</li>
+  <li><span class="list-icon"></span>Organisation des prestations en fonction de vos contraintes</li>                                                
+  <li><span class="list-icon"></span>Limitation de l’immobilisation du véhicule</li>      
 </ul>                                                      
                                                            
 <h3>Un accompagnement clair et honnête</h3>                
                                                            
 <ul>                                                       
-  <li>Explication simple des prestations avant intervention
-</li>                                                      
-  <li>Devis clair (pas de surprise)</li>                   
-  <li>Conseils d’entretien pour prolonger les résultats</li
->                                                          
+    <li><span class="list-icon"></span>Explication simple des prestations avant intervention</li>                                                      
+  <li><span class="list-icon"></span>Devis clair (pas de surprise)</li>                   
+    <li><span class="list-icon"></span>Conseils d’entretien pour prolonger les résultats</li>                                                          
 </ul>                                                      
 </section>                                                 
                                                            
 ---                                                        
                                                            
-<section>                                                  
-<h2>Déroulement d’une intervention</h2>                    
+<section class="fade-in-section">                                                  
+<h2>Déroulement d’une intervention</h2>
+{{< figure src="images/infographie.png" alt="Infographie détaillant le déroulement d'une intervention pour les services automobiles" loading="lazy" >}}                    
                                                            
 <ol>                                                       
   <li>                                                     
@@ -196,7 +178,7 @@ retenir l’intérieur et l’extérieur du véhicule.
                                                            
 ---                                                        
                                                            
-<section>                                                  
+<section class="fade-in-section">                                                  
 <h2>Zone d’intervention</h2>                               
                                                            
 <p>Je suis basé à <strong>Marseille</strong> et j’intervien
@@ -214,12 +196,17 @@ eur est couvert.</p>
                                                            
 ---                                                        
                                                            
-<section>                                                  
-<h2>Avis clients (à venir)</h2>                            
-                                                           
+<section class="fade-in-section">                                                  
+<h2>Avis clients</h2>
+
+<div>
+  {{< avis nom="Sophie Martin" note="5" texte="Service incroyable, je recommande vivement ! Mon véhicule est comme neuf après le nettoyage intérieur et le lustrage." avatar="images/avis_profil_Martin.png" >}}
+  {{< avis nom="Jean Dupont" note="3" texte="Bien, mais le rendez-vous a été décalé une fois. Le travail sur les phares est impeccable, mais la communication pourrait être améliorée." avatar="images/estron_profile_avis.png" >}}
+  {{< avis nom="Marc Dubois" note="4" texte="Très professionnel et ponctuel. Le détachage des sièges a fait des miracles. Je referai appel à ses services sans hésiter." avatar="images/estron_profile_avis.png" >}}
+</div>
+
 <p>Cette section pourra présenter les retours d’expérience 
-de mes clients&nbsp;:</p>                                  
-<ul>                                                       
+de mes clients&nbsp;:</p><ul>                                                       
   <li>nettoyage intérieur complet</li>                     
   <li>rénovation de phares</li>                            
   <li>lustrage carrosserie légère</li>                     
