@@ -1,0 +1,13 @@
+.service-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card-text {
+  flex-grow: 1;
+}
+
+.service-card img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}

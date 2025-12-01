@@ -2,6 +2,7 @@ baseURL = "https://fabrice-auto.vercel.app"
 languageCode = "fr-fr"
 title = "Fabrice Auto Nettoyage & rénovation esthétique"
 defaultContentLanguage = "fr"
+publishDir = "public"
 
 [params]
   author = "Fabrice Jouit"
@@ -11,3 +12,54 @@ defaultContentLanguage = "fr"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+# Configuration pour le traitement des images
+[imaging]
+  # Qualité par défaut pour les images (0-100)
+  quality = 80
+  # Format de sortie par défaut
+  resampleFilter = "Lanczos"
+  # Activer le support WebP
+  [imaging.formats]
+    [imaging.formats.webp]
+      quality = 80
+    [imaging.formats.jpeg]
+      quality = 80
+    [imaging.formats.png]
+      quality = 80
+
+# Configuration des ressources (CSS/JS)
+[build]
+  writeStats = true  # Génère un fichier stats.json pour le chargement des ressources
+  noJSConfigInAssets = false  # Permet l'utilisation de JS dans le dossier assets
+
+# Configuration du cache (désactivé pour le moment)
+[caches]
+  [caches.images]
+    dir = ":cacheDir/_gen/images"
+    maxAge = -1
+  [caches.getjson]
+    dir = ":cacheDir/_gen"
+    maxAge = -1
+  [caches.getcsv]
+    dir = ":cacheDir/_gen"
+    maxAge = -1
+  [caches.assets]
+    dir = ":resourceDir/_gen"
+    maxAge = -1
+
+# Configuration des assets
+[assets]
+  [assets.postCSS]
+    # Activer PostCSS pour le traitement avancé du CSS
+    noMap = true  # Désactive les source maps en production
+    [assets.postCSS.sassOptions]
+      precision = 6
+      outputStyle = "compressed"
+      sourceMap = false
+
+# Configuration du serveur de développement
+[server]
+  disableFastRender = false
+  enableEmoji = true
+  disableLiveReload = false

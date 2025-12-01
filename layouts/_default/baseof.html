@@ -14,13 +14,22 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ .Permalink }}" />
 
-  <!-- Google Fonts -->
+  <!-- Préchargement des polices critiques -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&display=swap">
 
-  <link rel="stylesheet" href="{{ "/css/style.css" | absURL }}">
-  <link rel="stylesheet" href="{{ "/css/custom-fixes.css" | absURL }}">
+  <!-- Feuilles de style optimisées -->
+  {{ $style := resources.Get "css/style.css" | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+
+  {{ $customFixes := resources.Get "css/custom-fixes.css" | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $customFixes.RelPermalink }}" integrity="{{ $customFixes.Data.Integrity }}">
+
+  <!-- Script de chargement asynchrone des polices -->
+  {{ $loadFontsJS := resources.Get "js/load-fonts.js" | minify | fingerprint }}
+  <script defer src="{{ $loadFontsJS.RelPermalink }}" integrity="{{ $loadFontsJS.Data.Integrity }}"></script>
+
   {{ hugo.Generator }}
 </head>
 <body>
@@ -101,6 +110,13 @@
     fadeInSections.forEach(section => {
       sectionObserver.observe(section);
     });
+
+    // Enregistrement du Service Worker
+    const registerSW = '{{ (resources.Get "js/register-sw.js" | minify | fingerprint).RelPermalink }}';
+    const script = document.createElement('script');
+    script.defer = true;
+    script.src = registerSW;
+    document.body.appendChild(script);
   </script>
 </body>
 </html>

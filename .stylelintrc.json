@@ -1,0 +1,16 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null,
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number"
+  },
+  "ignoreFiles": [
+    "**/node_modules/**",
+    "public/**",
+    "static/css/**"
+  ]
+}

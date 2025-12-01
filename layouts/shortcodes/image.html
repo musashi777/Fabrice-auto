@@ -1,14 +1,74 @@
+{{/* Charger le CSS des messages si nécessaire */}}
+{{ if not (.Page.Scratch.Get "image_css_loaded") }}
+  {{ $css := resources.Get "css/messages.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{ .Page.Scratch.Set "image_css_loaded" true }}
+{{ end }}
+
+{{/* Récupération des paramètres */}}
 {{ $src := .Get "src" }}
 {{ $alt := .Get "alt" | default "" }}
 {{ $class := .Get "class" | default "" }}
+{{ $loading := .Get "loading" | default "lazy" }}
+{{ $sizes := .Get "sizes" | default "(max-width: 1024px) 100vw, 1024px" }}
 
 {{ if $src }}
-  {{ $image := resources.Get $src }}
-  {{ if $image }}
-    <img src="{{ $image.RelPermalink }}" alt="{{ $alt }}" class="{{ $class }}">
+  {{/* Vérifier si c'est une image WebP */}}
+  {{ $isWebP := hasSuffix (lower $src) ".webp" }}
+  
+  {{ if $isWebP }}
+    {{/* Si c'est déjà une WebP, on l'utilise directement */}}
+    {{ $image := resources.Get $src }}
+    {{ if $image }}
+      <img 
+        src="{{ $image.RelPermalink }}" 
+        alt="{{ $alt }}" 
+        class="{{ $class }}"
+        loading="{{ $loading }}"
+        decoding="async"
+        {{ with $sizes }}sizes="{{ . }}"{{ end }}
+      >
+    {{ else }}
+      <p class="image-error">Image WebP non trouvée : {{ $src }}</p>
+    {{ end }}
   {{ else }}
-    <p style="color: red;">Image non trouvée : {{ $src }}</p>
+    {{/* Pour les autres formats, on essaie de trouver l'équivalent WebP */}}
+    {{ $originalImage := resources.Get $src }}
+    
+    {{ if $originalImage }}
+      {{/* Construire le chemin de l'image WebP */}}
+      {{ $webpPath := replace (replace $src "/images/" "/images/optimized/") (path.Ext $src) ".webp" }}
+      {{ $webpImage := resources.Get $webpPath }}
+      
+      {{ if $webpImage }}
+        {{/* Si l'image WebP optimisée existe, on l'utilise */}}
+        <img 
+          src="{{ $webpImage.RelPermalink }}" 
+          alt="{{ $alt }}" 
+          class="{{ $class }}"
+          loading="{{ $loading }}"
+          decoding="async"
+          {{ with $sizes }}sizes="{{ . }}"{{ end }}
+        >
+      {{ else }}
+        {{/* Sinon, on utilise l'image originale avec un avertissement */}}
+        <img 
+          src="{{ $originalImage.RelPermalink }}" 
+          alt="{{ $alt }}" 
+          class="{{ $class }}"
+          loading="{{ $loading }}"
+          decoding="async"
+          {{ with $sizes }}sizes="{{ . }}"{{ end }}
+        >
+        <!-- Avertissement en mode développement -->
+        {{ if eq hugo.Environment "development" }}
+          <p class="image-warning">Avertissement : L'image WebP optimisée n'a pas été trouvée pour {{ $src }}</p>
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      <p class="image-error">Image source non trouvée : {{ $src }}</p>
+    {{ end }}
   {{ end }}
 {{ else }}
-  <p style="color: red;">Attribut 'src' manquant.</p>
+  <p class="image-error">Attribut 'src' manquant.</p>
 {{ end }}
