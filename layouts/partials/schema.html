@@ -1,0 +1,151 @@
+{{/* Structured Data (JSON-LD) pour le SEO */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "{{ .Site.BaseURL }}#localbusiness",
+      "name": "{{ .Site.Title }}",
+      "description": "{{ .Site.Params.description | default "Nettoyage intérieur, détachage sièges, rénovation de phares et lustrage léger de carrosserie à domicile sur Marseille." }}",
+      "url": "{{ .Site.BaseURL }}",
+      "telephone": "+33614031995",
+      "email": "fabjouit@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Marseille",
+        "addressRegion": "Provence-Alpes-Côte d'Azur",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "43.296482",
+        "longitude": "5.369780"
+      },
+      "openingHours": "Mo-Fr 08:00-19:00, Sa 08:00-12:00",
+      "priceRange": "€€",
+      "image": [
+        "{{ "images/optimized/hero-accueil.webp" | absURL }}",
+        "{{ "images/optimized/profil-atelier-tablette.webp" | absURL }}"
+      ],
+      "sameAs": [
+        "https://www.facebook.com/people/Fabrice-Auto/61574737049789/",
+        "https://www.instagram.com/fabrice_auto_/"
+      ],
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "43.296482",
+          "longitude": "5.369780"
+        },
+        "geoRadius": "20000"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ .Site.BaseURL }}#website",
+      "url": "{{ .Site.BaseURL }}",
+      "name": "{{ .Site.Title }}",
+      "description": "{{ .Site.Params.description }}",
+      "publisher": {
+        "@id": "{{ .Site.BaseURL }}#localbusiness"
+      }
+    },
+    {{ if .IsHome }}
+    {
+      "@type": "WebPage",
+      "@id": "{{ .Permalink }}#webpage",
+      "url": "{{ .Permalink }}",
+      "name": "{{ .Title }} – {{ .Site.Title }}",
+      "isPartOf": {
+        "@id": "{{ .Site.BaseURL }}#website"
+      },
+      "about": {
+        "@id": "{{ .Site.BaseURL }}#localbusiness"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "{{ "images/optimized/hero-accueil.webp" | absURL }}",
+        "width": "1920",
+        "height": "1080"
+      }
+    },
+    {{ end }}
+    {{/* Services offerts */}}
+    {
+      "@type": "Service",
+      "name": "Nettoyage intérieur complet",
+      "serviceType": "Car interior cleaning",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "{{ .Site.Title }}"
+      },
+      "description": "Nettoyage complet de l'habitacle, sièges, moquettes, plastiques et vitres.",
+      "areaServed": "Marseille et environs",
+      "offers": {
+        "@type": "Offer",
+        "price": "80",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Détachage sièges et moquettes",
+      "serviceType": "Upholstery cleaning",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "{{ .Site.Title }}"
+      },
+      "description": "Élimination des taches sur sièges et moquettes avec produits professionnels.",
+      "areaServed": "Marseille et environs"
+    },
+    {
+      "@type": "Service",
+      "name": "Rénovation de phares",
+      "serviceType": "Headlight restoration",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "{{ .Site.Title }}"
+      },
+      "description": "Rénovation de phares opaques ou jaunis pour retrouver une visibilité optimale.",
+      "areaServed": "Marseille et environs"
+    },
+    {
+      "@type": "Service",
+      "name": "Lustrage léger de carrosserie",
+      "serviceType": "Car polishing",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "{{ .Site.Title }}"
+      },
+      "description": "Lustrage sans peinture pour redonner de l'éclat à votre carrosserie.",
+      "areaServed": "Marseille et environs"
+    }
+    {{/* Ajouter les avis si disponibles */}}
+    {{ with .Site.Data.reviews }}
+    ,
+    {{ range $index, $review := . }}
+    {{ if $index }},{{ end }}
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "{{ $review.author }}"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "{{ $review.rating }}",
+        "bestRating": "5"
+      },
+      "reviewBody": "{{ $review.text }}",
+      "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "{{ $.Site.Title }}"
+      }
+    }
+    {{ end }}
+    {{ end }}
+  ]
+}
+</script>

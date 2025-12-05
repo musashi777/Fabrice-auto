@@ -21,7 +21,7 @@ Demander un devis sur WhatsApp
 
 <div class="service-block">
   <div class="service-image">
-    {{< image src="images/service-nettoyage-interieur.png" alt="Nettoyage intérieur complet de voiture" >}}
+    {{< image src="images/service-nettoyage-interieur.png" alt="Nettoyage intérieur complet de voiture" width="800" height="600" >}}
   </div>
   <div class="service-text">
 <h3>Contenu de la prestation</h3>
@@ -61,7 +61,7 @@ Demander un devis sur WhatsApp
 <div class="service-block">
   <div class="service-image">
     <!-- Même image pour l’instant, tu pourras en mettre une autre plus tard -->
-    {{< image src="images/nettoyage-siege-et-moquettes.png" alt="Détachage de sièges et moquettes" >}}
+    {{< image src="images/nettoyage-siege-et-moquettes.png" alt="Détachage de sièges et moquettes" width="800" height="600" >}}
   </div>
   <div class="service-text">
 <h3>Objectif</h3>
@@ -94,7 +94,7 @@ Demander un devis sur WhatsApp
 
 <div class="service-block">
   <div class="service-image">
-    {{< image src="images/nettoyage-interieur-voiture-marseille.jpg" alt="Traitement des mauvaises odeurs" >}}
+    {{< image src="images/nettoyage-interieur-voiture-marseille.jpg" alt="Traitement des mauvaises odeurs" width="800" height="600" >}}
   </div>
   <div class="service-text">
 <h3>Types d’odeurs traitées</h3>
@@ -119,7 +119,7 @@ Demander un devis sur WhatsApp
 
 <div class="service-block">
   <div class="service-image">
-    {{< image src="images/service-renovation-phares.png" alt="Rénovation de phares opaques et jaunis" >}}
+    {{< image src="images/service-renovation-phares.png" alt="Rénovation de phares opaques et jaunis" width="800" height="600" >}}
   </div>
   <div class="service-text">
 <h3>Symptômes fréquents</h3>
@@ -155,7 +155,7 @@ Demander un devis sur WhatsApp
 
 <div class="service-block">
   <div class="service-image">
-    {{< image src="images/service-lustrage-capot.png" alt="Lustrage léger de carrosserie sur capot" >}}
+    {{< image src="images/service-lustrage-capot.png" alt="Lustrage léger de carrosserie sur capot" width="800" height="600" >}}
   </div>
   <div class="service-text">
 <h3>Objectif</h3>

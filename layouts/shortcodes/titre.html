@@ -1,0 +1,59 @@
+{{/* Shortcode pour titres modernes et design */}}
+{{ $level := .Get "level" | default "2" }}
+{{ $text := .Get "text" | default "" }}
+{{ $align := .Get "align" | default "left" }}
+{{ $color := .Get "color" | default "accent" }}
+{{ $decoration := .Get "decoration" | default "underline" }}
+
+{{/* Définir les couleurs */}}
+{{ $colorClass := "" }}
+{{ if eq $color "accent" }}
+  {{ $colorClass = "titre-accent" }}
+{{ else if eq $color "dark" }}
+  {{ $colorClass = "titre-dark" }}
+{{ else if eq $color "light" }}
+  {{ $colorClass = "titre-light" }}
+{{ end }}
+
+{{/* Définir les styles de décoration */}}
+{{ $decorationClass := "" }}
+{{ if eq $decoration "underline" }}
+  {{ $decorationClass = "titre-underline" }}
+{{ else if eq $decoration "highlight" }}
+  {{ $decorationClass = "titre-highlight" }}
+{{ else if eq $decoration "gradient" }}
+  {{ $decorationClass = "titre-gradient" }}
+{{ else if eq $decoration "shadow" }}
+  {{ $decorationClass = "titre-shadow" }}
+{{ else if eq $decoration "icon" }}
+  {{ $decorationClass = "titre-icon" }}
+{{ else if eq $decoration "border" }}
+  {{ $decorationClass = "titre-border" }}
+{{ end }}
+
+{{/* Générer le titre */}}
+{{ if eq $level "1" }}
+  <h1 class="titre-modern {{ $colorClass }} {{ $decorationClass }} titre-align-{{ $align }}">
+    {{ $text }}
+  </h1>
+{{ else if eq $level "2" }}
+  <h2 class="titre-modern {{ $colorClass }} {{ $decorationClass }} titre-align-{{ $align }}">
+    {{ $text }}
+  </h2>
+{{ else if eq $level "3" }}
+  <h3 class="titre-modern {{ $colorClass }} {{ $decorationClass }} titre-align-{{ $align }}">
+    {{ $text }}
+  </h3>
+{{ else if eq $level "4" }}
+  <h4 class="titre-modern {{ $colorClass }} {{ $decorationClass }} titre-align-{{ $align }}">
+    {{ $text }}
+  </h4>
+{{ else if eq $level "5" }}
+  <h5 class="titre-modern {{ $colorClass }} {{ $decorationClass }} titre-align-{{ $align }}">
+    {{ $text }}
+  </h5>
+{{ else if eq $level "6" }}
+  <h6 class="titre-modern {{ $colorClass }} {{ $decorationClass }} titre-align-{{ $align }}">
+    {{ $text }}
+  </h6>
+{{ end }}

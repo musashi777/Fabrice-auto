@@ -1,0 +1,42 @@
+<div class="before-after-gallery">
+  <div class="gallery-header">
+    <h3>{{ .Get "title" | default "Galerie avant/après" }}</h3>
+    <p>{{ .Get "description" | default "Découvrez les transformations réalisées par Fabrice Auto" }}</p>
+  </div>
+
+  <div class="gallery-items">
+    {{ range $index, $item := split (.Get "images") "|" }}
+      {{ $parts := split $item ":" }}
+      {{ if eq (len $parts) 3 }}
+        <div class="gallery-item fade-in-section">
+          <div class="image-comparison">
+            <div class="before-image">
+              <img
+                src="{{ index $parts 0 }}"
+                alt="Avant - {{ index $parts 2 }}"
+                loading="lazy"
+                width="600"
+                height="400"
+              >
+              <div class="image-label">Avant</div>
+            </div>
+            <div class="after-image">
+              <img
+                src="{{ index $parts 1 }}"
+                alt="Après - {{ index $parts 2 }}"
+                loading="lazy"
+                width="600"
+                height="400"
+              >
+              <div class="image-label">Après</div>
+            </div>
+          </div>
+          <div class="gallery-caption">
+            <h4>{{ index $parts 2 }}</h4>
+            <p>{{ .Get (printf "desc%d" $index) | default "Transformation professionnelle réalisée par Fabrice Auto" }}</p>
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
