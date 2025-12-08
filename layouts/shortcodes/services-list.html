@@ -1,0 +1,150 @@
+{{/* Shortcode pour afficher la liste des services */}}
+{{ $services := site.Params.services_list }}
+{{ if $services }}
+<div class="services-grid">
+  {{ range $index, $service := $services }}
+  <div class="service-card fade-in-section">
+    <div class="service-icon">
+      {{ if eq $index 0 }}
+        <!-- Icône nettoyage -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13.5 2L12 0h-1.5L9 2 6 4l-2 2v2l-2 2v12h20V10l-2-2V6l-2-2-3.5-2zM10 4.5l2-1.5 2 1.5L16 6H8l2-1.5zM4 8h16v12H4V8zm4 2v2h2v-2H8zm6 0v2h2v-2h-2z"/>
+        </svg>
+      {{ else if eq $index 1 }}
+        <!-- Icône lustrage -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-8c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S9.83 9 9 9s-1.5.67-1.5 1.5zm7 0c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"/>
+        </svg>
+      {{ else if eq $index 2 }}
+        <!-- Icône vente -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+        </svg>
+      {{ else if eq $index 3 }}
+        <!-- Icône phares -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13 6.06V3h-2v3.06c-4.5.5-8 4.31-8 8.93C3 16.1 3.9 17 5.01 17H8c0 2.21 1.79 4 4 4s4-1.79 4-4h2.99c1.11 0 2.01-.9 2.01-2.01 0-4.62-3.5-8.43-8-8.93zM12 19c-1.1 0-2-.9-2-2h4c0 1.1-.9 2-2 2zm0-4H5c0-3.86 3.14-7 7-7s7 3.14 7 7H12z"/>
+        </svg>
+      {{ else }}
+        <!-- Icône détachage -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18 2h-8L8 4H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6V6h2l2-2h8v12z"/>
+        </svg>
+      {{ end }}
+    </div>
+    <h3 class="service-name">{{ $service }}</h3>
+    <p class="service-description">
+      {{ if eq $index 0 }}
+        Nettoyage complet de l'intérieur avec produits professionnels
+      {{ else if eq $index 1 }}
+        Lustrage carrosserie pour redonner l'éclat d'origine
+      {{ else if eq $index 2 }}
+        Forfait complet pour préparer votre véhicule à la vente
+      {{ else if eq $index 3 }}
+        Rénovation complète des phares pour une visibilité optimale
+      {{ else }}
+        Élimination professionnelle des taches les plus tenaces
+      {{ end }}
+    </p>
+    <a href="/services/{{ $service | urlize }}" class="service-link">
+      En savoir plus
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </a>
+  </div>
+  {{ end }}
+</div>
+
+<style>
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.service-card {
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--color-border);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  background: var(--color-primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.service-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.service-name {
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.service-description {
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.service-link:hover {
+  color: var(--color-primary-dark);
+}
+
+.service-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+}
+
+.service-link:hover svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+}
+</style>
+{{ else }}
+<p class="text-center">Les informations sur nos services seront bientôt disponibles.</p>
+{{ end }}

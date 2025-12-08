@@ -1,120 +1,55 @@
-{{/* Charger le CSS des messages si nécessaire */}}
-{{ if not (.Page.Scratch.Get "image_css_loaded") }}
-  {{ $css := resources.Get "css/messages.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-  {{ .Page.Scratch.Set "image_css_loaded" true }}
-{{ end }}
-
-{{/* Récupération des paramètres */}}
 {{ $src := .Get "src" }}
 {{ $alt := .Get "alt" | default "" }}
 {{ $class := .Get "class" | default "" }}
-{{ $loading := .Get "loading" | default "lazy" }}
-{{ $sizes := .Get "sizes" | default "(max-width: 1024px) 100vw, 1024px" }}
 {{ $width := .Get "width" | default "" }}
 {{ $height := .Get "height" | default "" }}
 
 {{ if $src }}
-  {{/* Vérifier si c'est une image WebP */}}
-  {{ $isWebP := hasSuffix (lower $src) ".webp" }}
+  {{/* Extraire le nom de fichier sans extension */}}
+  {{ $filename := path.Base $src }}
+  {{ $nameWithoutExt := strings.TrimSuffix (path.Ext $filename) $filename }}
 
-  {{ if $isWebP }}
-    {{/* Si c'est déjà une WebP, on l'utilise directement */}}
+  {{/* Chemin vers l'image optimisée */}}
+  {{ $optimizedPath := printf "/images/optimized/%s.webp" $nameWithoutExt }}
+
+  {{/* Vérifier si l'image optimisée existe */}}
+  {{ $optimizedExists := fileExists (printf "static/images/optimized/%s.webp" $nameWithoutExt) }}
+
+  {{ if $optimizedExists }}
+    {{/* Utiliser l'image optimisée WebP */}}
+    <img
+      src="{{ $optimizedPath }}"
+      alt="{{ $alt }}"
+      class="{{ $class }}"
+      loading="lazy"
+      decoding="async"
+      {{ with $width }}width="{{ . }}"{{ end }}
+      {{ with $height }}height="{{ . }}"{{ end }}
+    >
+  {{ else }}
+    {{/* Fallback vers l'image originale */}}
     {{ $image := resources.Get $src }}
     {{ if $image }}
-      {{/* Obtenir les dimensions si non fournies */}}
-      {{ $imgWidth := $width }}
-      {{ $imgHeight := $height }}
-      {{ if and (not $imgWidth) (not $imgHeight) }}
-        {{ with $image.Exif }}
-          {{ $imgWidth = .Tags.ImageWidth }}
-          {{ $imgHeight = .Tags.ImageHeight }}
-        {{ end }}
-      {{ end }}
-
       <img
         src="{{ $image.RelPermalink }}"
         alt="{{ $alt }}"
         class="{{ $class }}"
-        loading="{{ $loading }}"
+        loading="lazy"
         decoding="async"
-        {{ with $imgWidth }}width="{{ . }}"{{ end }}
-        {{ with $imgHeight }}height="{{ . }}"{{ end }}
-        {{ with $sizes }}sizes="{{ . }}"{{ end }}
+        {{ with $width }}width="{{ . }}"{{ end }}
+        {{ with $height }}height="{{ . }}"{{ end }}
       >
     {{ else }}
-      <p class="image-error">Image WebP non trouvée : {{ $src }}</p>
-    {{ end }}
-  {{ else }}
-    {{/* Pour les autres formats, on essaie de trouver l'équivalent WebP */}}
-    {{ $originalImage := resources.Get $src }}
-
-    {{ if $originalImage }}
-      {{/* Construire le chemin de base pour les images optimisées */}}
-      {{ $baseName := replace (path.Base $src) (path.Ext $src) "" }}
-      {{ $optimizedDir := "images/optimized/" }}
-
-      {{/* Définir les tailles pour srcset */}}
-      {{ $breakpoints := slice 320 640 768 1024 1280 1920 }}
-      {{ $srcsetParts := slice }}
-      {{ $defaultSrc := "" }}
-
-      {{/* Chercher toutes les tailles disponibles */}}
-      {{ range $breakpoints }}
-        {{ $suffix := "" }}
-        {{ if eq . 320 }}{{ $suffix = "-xs" }}
-        {{ else if eq . 640 }}{{ $suffix = "-sm" }}
-        {{ else if eq . 768 }}{{ $suffix = "-md" }}
-        {{ else if eq . 1024 }}{{ $suffix = "-lg" }}
-        {{ else if eq . 1280 }}{{ $suffix = "-xl" }}
-        {{ end }}
-
-        {{ $webpPath := printf "%s%s%s.webp" $optimizedDir $baseName $suffix }}
-        {{ $webpImage := resources.Get $webpPath }}
-
-        {{ if $webpImage }}
-          {{ $srcsetParts = $srcsetParts | append (printf "%s %dw" $webpImage.RelPermalink .) }}
-          {{ if eq . 1920 }}{{ $defaultSrc = $webpImage.RelPermalink }}{{ end }}
-        {{ end }}
-      {{ end }}
-
-      {{/* Si aucune image WebP n'a été trouvée, utiliser l'originale */}}
-      {{ if not $defaultSrc }}
-        {{ $webpPath := printf "%s%s.webp" $optimizedDir $baseName }}
-        {{ $webpImage := resources.Get $webpPath }}
-        {{ if $webpImage }}
-          {{ $defaultSrc = $webpImage.RelPermalink }}
-        {{ else }}
-          {{ $defaultSrc = $originalImage.RelPermalink }}
-        {{ end }}
-      {{ end }}
-
-      {{/* Obtenir les dimensions si non fournies */}}
-      {{ $imgWidth := $width }}
-      {{ $imgHeight := $height }}
-      {{ if and (not $imgWidth) (not $imgHeight) }}
-        {{ with $originalImage.Exif }}
-          {{ $imgWidth = .Tags.ImageWidth }}
-          {{ $imgHeight = .Tags.ImageHeight }}
-        {{ end }}
-      {{ end }}
-
-      {{/* Générer la balise img avec srcset si disponible */}}
+      {{/* Fallback vers le chemin statique */}}
       <img
-        src="{{ $defaultSrc }}"
+        src="{{ $src }}"
         alt="{{ $alt }}"
         class="{{ $class }}"
-        loading="{{ $loading }}"
+        loading="lazy"
         decoding="async"
-        {{ with $imgWidth }}width="{{ . }}"{{ end }}
-        {{ with $imgHeight }}height="{{ . }}"{{ end }}
-        {{ with $sizes }}sizes="{{ . }}"{{ end }}
-        {{ if gt (len $srcsetParts) 1 }}
-          srcset="{{ delimit $srcsetParts ", " }}"
-        {{ end }}
+        {{ with $width }}width="{{ . }}"{{ end }}
+        {{ with $height }}height="{{ . }}"{{ end }}
       >
-    {{ else }}
-      <p class="image-error">Image source non trouvée : {{ $src }}</p>
     {{ end }}
   {{ end }}
 {{ else }}

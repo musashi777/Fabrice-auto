@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const reference = `FA-${Date.now().toString().slice(-8)}`;
       document.getElementById('reference-number').textContent = reference;
 
-      // Passer à l'étape de confirmation
+      // Passer à l'étape de confirmation avec option de réservation
       showStep(3);
 
       // Réinitialiser le bouton
@@ -277,6 +277,9 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Données du devis envoyées :', formData);
       // Ici, vous pourriez utiliser : fetch('/api/devis', { method: 'POST', body: JSON.stringify(formData) })
 
+      // Préparer les données pour la réservation
+      window.devisData = formData;
+
     }, 1500);
   });
 
@@ -285,6 +288,50 @@ document.addEventListener('DOMContentLoaded', function() {
     devisForm.reset();
     showStep(0);
     updateRecap();
+  });
+
+  // Bouton "Réserver maintenant"
+  document.getElementById('reserver-maintenant')?.addEventListener('click', function() {
+    // Récupérer les données du devis
+    const devisData = window.devisData || {};
+
+    // Rediriger vers la page de réservation avec pré-remplissage
+    const params = new URLSearchParams({
+      nom: devisData.nom || '',
+      telephone: devisData.telephone || '',
+      email: devisData.email || '',
+      services: devisData.services?.join(',') || '',
+      prix: devisData.prix_total || '',
+      reference: devisData.reference || ''
+    });
+
+    window.location.href = `/reservation/?${params.toString()}`;
+  });
+
+  // Bouton "Réserver plus tard"
+  document.getElementById('reserver-plus-tard')?.addEventListener('click', function() {
+    // Afficher un message de confirmation
+    const confirmationDiv = document.querySelector('.confirmation-message');
+    const originalHTML = confirmationDiv.innerHTML;
+
+    confirmationDiv.innerHTML = `
+      <div class="confirmation-icon">📋</div>
+      <h3>Devis sauvegardé !</h3>
+      <p>Votre devis a été enregistré avec la référence : <strong>${window.devisData?.reference || ''}</strong></p>
+      <p>Vous pouvez réserver votre créneau à tout moment en utilisant cette référence.</p>
+      <p>Conservez bien ce numéro : <strong>${window.devisData?.reference || ''}</strong></p>
+      <div class="confirmation-actions">
+        <button type="button" class="btn btn-primary" id="new-devis">Nouvelle demande</button>
+        <a href="/reservation/" class="btn btn-success">Réserver maintenant</a>
+      </div>
+    `;
+
+    // Réattacher l'événement
+    document.getElementById('new-devis')?.addEventListener('click', function() {
+      devisForm.reset();
+      showStep(0);
+      updateRecap();
+    });
   });
 
   // Initialiser le récapitulatif

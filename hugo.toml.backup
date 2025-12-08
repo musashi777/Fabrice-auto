@@ -4,50 +4,9 @@ title = "Fabrice Auto Nettoyage & rénovation esthétique"
 defaultContentLanguage = "fr"
 publishDir = "public"
 
-# Configuration SEO avancée
-enableRobotsTXT = true
-enableEmoji = true
-metaDataFormat = "yaml"
-disablePathToLower = false
-removePathAccents = true
-
-# Taxonomies pour le SEO local
-[taxonomies]
-  zone = "zones"
-  service = "services"
-  tag = "tags"
-
-# Permaliens optimisés pour le SEO
-[permalinks]
-  services = "/:slug/"
-  zones = "/nettoyage-auto-:slug/"
-  articles = "/conseils/:slug/"
-
 [params]
   author = "Fabrice Jouit"
   description = "Nettoyage intérieur, rénovation de phares et remise en beauté esthétique automobile à domicile sur Marseille."
-
-  # Zones couvertes pour le SEO local (format liste simple)
-  zones_list = [
-    "Marseille 8ème (13008)",
-    "Marseille 6ème (13006)",
-    "Cassis (13260)",
-    "Aix-en-Provence (13090)",
-    "Vitrolles (13127)",
-    "Aubagne (13400)"
-  ]
-
-  # Services principaux (format liste simple)
-  services_list = [
-    "Nettoyage Intérieur Professionnel",
-    "Lustrage & Carrosserie",
-    "Formule Vente Complète",
-    "Rénovation de Phares",
-    "Détachage Professionnel"
-  ]
-
-  # Mots-clés principaux pour le SEO
-  keywords = "nettoyage auto Marseille, lavage voiture à sec, lustrage carrosserie, rénovation phares, nettoyage intérieur professionnel"
 
 [markup]
   [markup.goldmark]

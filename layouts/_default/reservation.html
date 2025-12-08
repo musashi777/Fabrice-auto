@@ -1,0 +1,346 @@
+{{ define "main" }}
+<main class="page-reservation">
+  <section class="hero-reservation">
+    <div class="container">
+      <h1>{{ .Title }}</h1>
+      <p class="lead">{{ .Description }}</p>
+
+      <div class="reservation-steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>Choisissez</h3>
+          <p>Sélectionnez votre prestation</p>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Planifiez</h3>
+          <p>Choisissez date et heure</p>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3>Confirmez</h3>
+          <p>Recevez confirmation immédiate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reservation-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- Contenu principal -->
+          <div class="content-main">
+            {{ .Content }}
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <!-- Sidebar avec infos importantes -->
+          <aside class="reservation-sidebar">
+            <div class="sidebar-card">
+              <h3>📅 Disponibilités rapides</h3>
+              <ul class="availability-list">
+                <li><strong>Aujourd'hui</strong> : 2 créneaux restants</li>
+                <li><strong>Demain</strong> : 5 créneaux disponibles</li>
+                <li><strong>Cette semaine</strong> : 15 créneaux ouverts</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>⏱️ Durées estimées</h3>
+              <ul class="duration-list">
+                <li>Citadine : 2-3 heures</li>
+                <li>Berline : 3-4 heures</li>
+                <li>SUV/4x4 : 4-5 heures</li>
+                <li>Luxury : 5-6 heures</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>✅ Avantages</h3>
+              <ul class="advantages-list">
+                <li>Confirmation immédiate</li>
+                <li>Rappel SMS 24h avant</li>
+                <li>Annulation gratuite</li>
+                <li>Paiement sur place</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-card urgent-card">
+              <h3>🚨 Urgence ?</h3>
+              <p>Besoin d'un créneau aujourd'hui ?</p>
+              <a href="tel:+33614031995" class="btn btn-urgent">
+                Appeler maintenant
+              </a>
+              <p class="small">Réponse immédiate</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Script Calendly -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Configuration Calendly
+  const calendlyConfig = {
+    url: 'https://calendly.com/fabrice-auto/30min',
+    parentElement: document.getElementById('calendly-widget'),
+    prefill: {},
+    utm: {}
+  };
+
+  // Charger Calendly après 1 seconde
+  setTimeout(function() {
+    if (typeof Calendly !== 'undefined') {
+      Calendly.initInlineWidget(calendlyConfig);
+    } else {
+      console.error('Calendly script not loaded');
+      document.getElementById('calendly-widget').innerHTML =
+        '<div class="calendly-fallback">' +
+        '  <p>Le calendrier de réservation est temporairement indisponible.</p>' +
+        '  <p>Veuillez nous contacter directement :</p>' +
+        '  <a href="tel:+33614031995" class="btn btn-primary">📞 06 14 03 19 95</a>' +
+        '</div>';
+    }
+  }, 1000);
+
+  // Tracking des clics sur réservation
+  document.querySelectorAll('.btn-whatsapp, .btn-primary, .btn-urgent').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'reservation_click', {
+          'event_category': 'conversion',
+          'event_label': this.textContent.trim()
+        });
+      }
+    });
+  });
+});
+</script>
+
+<style>
+.page-reservation {
+  padding-top: 2rem;
+}
+
+.hero-reservation {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+  color: white;
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+  border-radius: 0 0 20px 20px;
+}
+
+.hero-reservation h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-reservation .lead {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.reservation-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.step {
+  flex: 1;
+  min-width: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.step-number {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: white;
+  color: #1a73e8;
+  border-radius: 50%;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.reservation-sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+.sidebar-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e9ecef;
+}
+
+.sidebar-card h3 {
+  color: #1a73e8;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.availability-list, .duration-list, .advantages-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.availability-list li, .duration-list li, .advantages-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.availability-list li:last-child,
+.duration-list li:last-child,
+.advantages-list li:last-child {
+  border-bottom: none;
+}
+
+.urgent-card {
+  background: #fff3cd;
+  border-color: #ffeaa7;
+}
+
+.urgent-card h3 {
+  color: #d35400;
+}
+
+.btn-urgent {
+  display: block;
+  width: 100%;
+  background: #e74c3c;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.btn-urgent:hover {
+  background: #c0392b;
+  color: white;
+}
+
+.calendly-container {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin: 2rem 0;
+}
+
+.calendly-fallback {
+  text-align: center;
+  padding: 3rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.contact-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp:hover::before {
+  left: 100%;
+}
+
+.btn-whatsapp:active {
+  transform: translateY(-1px);
+}
+
+.btn-whatsapp:focus-visible {
+  outline: 2px solid #128C7E;
+  outline-offset: 2px;
+}
+
+.btn-whatsapp.pulse {
+  animation: pulse-whatsapp 2s infinite;
+}
+
+@keyframes pulse-whatsapp {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .reservation-steps {
+    flex-direction: column;
+  }
+
+  .step {
+    margin-bottom: 1rem;
+  }
+
+  .hero-reservation h1 {
+    font-size: 2rem;
+  }
+}
+</style>
+{{ end }}

@@ -36,7 +36,6 @@
   {{ partial "schema.html" . }}
 
   {{ hugo.Generator }}
-  <link rel="manifest" href="/manifest.json">
 </head>
 <body>
   <header class="site-header">
@@ -51,7 +50,17 @@
         <a href="{{ "/" | relURL }}">Accueil</a>
         <a href="{{ "/services/" | relURL }}">Services</a>
         <a href="{{ "/profil/" | relURL }}">Profil</a>
-        <a href="{{ "/articles/" | relURL }}">Articles</a>
+        <div class="dropdown">
+          <a href="{{ "/articles/" | relURL }}" class="dropdown-toggle">Articles <span class="dropdown-arrow">▼</span></a>
+          <div class="dropdown-menu">
+            <a href="{{ "/articles/" | relURL }}">Tous les articles</a>
+            <a href="{{ "/conseils/nettoyage-interieur-professionnel-les-secrets-dune-voiture-comme-neuve/" | relURL }}">Nettoyage intérieur</a>
+            <a href="{{ "/conseils/lustrage-carrosserie-pourquoi-cest-essentiel-pour-votre-vehicule/" | relURL }}">Lustrage carrosserie</a>
+            <a href="{{ "/conseils/renovation-de-phares-retrouvez-une-visibilite-optimale-et-un-look-neuf/" | relURL }}">Rénovation de phares</a>
+            <a href="{{ "/conseils/nettoyage-des-sieges-auto-avec-des-produits-naturels-guide-complet/" | relURL }}">Produits naturels</a>
+          </div>
+        </div>
+        <a href="{{ "/reservation/" | relURL }}" class="nav-reservation">📅 Réservation</a>
         <a href="{{ "/contact/" | relURL }}">Contact</a>
       </nav>
     </div>
@@ -130,12 +139,6 @@
 
   {{ $scrollAnimationsJS := resources.Get "js/scroll-animations.js" | minify | fingerprint }}
   <script defer src="{{ $scrollAnimationsJS.RelPermalink }}" integrity="{{ $scrollAnimationsJS.Data.Integrity }}"></script>
-
-  {{ if eq .RelPermalink "/contact/" }}
-  <!-- Script du formulaire de devis (uniquement sur la page Contact) -->
-  {{ $devisJS := resources.Get "js/devis-calculator.js" | minify | fingerprint }}
-  <script defer src="{{ $devisJS.RelPermalink }}" integrity="{{ $devisJS.Data.Integrity }}"></script>
-  {{ end }}
 
 </body>
 </html>

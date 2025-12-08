@@ -198,13 +198,16 @@ eur est couvert.</p>
 
 ---
 
+{{ partial "devis-form.html" . }}
+
 <section class="fade-in-section">
 {{< titre level="2" text="Avis clients" align="center" color="dark" decoration="icon" >}}
 
 <div>
   {{< avis nom="Sophie Martin" note="5" texte="Service incroyable, je recommande vivement ! Mon véhicule est comme neuf après le nettoyage intérieur et le lustrage." avatar="images/avis_profil_Martin.png" >}}
-  {{< avis nom="Jean Dupont" note="3" texte="Bien, mais le rendez-vous a été décalé une fois. Le travail sur les phares est impeccable, mais la communication pourrait être améliorée." avatar="images/estron_profile_avis.png" >}}
-  {{< avis nom="Marc Dubois" note="4" texte="Très professionnel et ponctuel. Le détachage des sièges a fait des miracles. Je referai appel à ses services sans hésiter." avatar="images/estron_profile_avis.png" >}}
+  {{< avis nom="Manu Estron" note="3" texte="Bien, mais le rendez-vous a été décalé une fois. Le travail sur les phares est impeccable, mais la communication pourrait être améliorée." avatar="images/estron_profile_avis.png" >}}
+  {{< avis nom="Vlad (le tolérant)" note="5" texte="Rien à redire, travail parfait ! En Russie, on dit : 'Хорошая работа видна сразу' (Un bon travail se voit immédiatement)." avatar="images/avis_profile_vlad.jpg" >}}
+  {{< avis nom="Rocky Balboa (alias Osiris)" note="5" texte="Si j'avais 30 ans de moins, je lui aurais bien donné une leçon de géographie ! Mais pour le nettoyage auto, c'est lui le champion." avatar="images/optimized/avis_profile_rocki_balboa( alias Osiris).webp" >}}
 </div>
 
 <p>Cette section pourra présenter les retours d’expérience

@@ -9,13 +9,31 @@
       {{ .Content }}
 
       {{ if .Pages }}
-        <ul class="page-list">
+        <div class="articles-grid">
           {{ range .Pages }}
-            <li>
-              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            </li>
+            <article class="article-card">
+              <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+              {{ if .Params.description }}
+                <p class="article-excerpt">{{ .Params.description }}</p>
+              {{ end }}
+              <div class="article-meta">
+                {{ if .Date }}
+                  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+                {{ end }}
+                {{ if .Params.categories }}
+                  <span class="article-categories">
+                    {{ range .Params.categories }}
+                      <span class="category-tag">{{ . }}</span>
+                    {{ end }}
+                  </span>
+                {{ end }}
+              </div>
+              <a href="{{ .RelPermalink }}" class="article-read-more">Lire l'article →</a>
+            </article>
           {{ end }}
-        </ul>
+        </div>
+      {{ else }}
+        <p class="no-articles">Aucun article disponible pour le moment.</p>
       {{ end }}
     </article>
   {{ end }}

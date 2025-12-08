@@ -417,3 +417,207 @@
 .consent .checkbox-label:hover {
   background: transparent;
 }
+
+/* Options de réservation */
+.reservation-options {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
+  border-radius: 12px;
+  border: 2px solid #e3f2fd;
+}
+
+.reservation-options h4 {
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.reservation-options p {
+  color: #495057;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Boutons de réservation */
+.reservation-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.btn-lg {
+  padding: 1.25rem 2rem;
+  font-size: 1.1rem;
+  min-width: 250px;
+  flex: 1;
+  max-width: 300px;
+}
+
+.btn-success {
+  background: #27ae60;
+  border-color: #27ae60;
+}
+
+.btn-success:hover {
+  background: #219653;
+  border-color: #219653;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+}
+
+.btn-outline-primary {
+  background: transparent;
+  border: 2px solid #3498db;
+  color: #3498db;
+}
+
+.btn-outline-primary:hover {
+  background: #3498db;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+}
+
+.btn-icon {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-text {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.btn-subtext {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+/* Bénéfices de réservation */
+.reservation-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed #dee2e6;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.benefit:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e3f2fd;
+  border-radius: 50%;
+  color: #3498db;
+  flex-shrink: 0;
+}
+
+.benefit-text {
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+/* Footer de confirmation */
+.confirmation-footer {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.small-note {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.contact-options {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.btn-outline-secondary {
+  background: transparent;
+  border: 1px solid #6c757d;
+  color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-outline-success {
+  background: transparent;
+  border: 1px solid #27ae60;
+  color: #27ae60;
+}
+
+.btn-outline-success:hover {
+  background: #27ae60;
+  color: white;
+}
+
+/* Responsive pour les options de réservation */
+@media (max-width: 768px) {
+  .reservation-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-lg {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .reservation-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-sm {
+    width: 100%;
+    max-width: 250px;
+  }
+}
