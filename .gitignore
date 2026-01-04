@@ -24,3 +24,4 @@ yarn-error.log
 # VSCode
 .vscode/
 .hugo_build.lock
+.vercel

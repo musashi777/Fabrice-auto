@@ -1,0 +1,51 @@
+{{ define "main" }}
+<div class="urgence-page">
+
+    <!-- STICKY HEADER MOBILE -->
+    <header class="urgence-header">
+        <div class="container">
+            <h1>{{ .Params.urgence.titre_hero }}</h1>
+            <p class="subtitle">Intervention {{ .Params.urgence.delai }} sur Marseille</p>
+        </div>
+    </header>
+
+    <!-- HERO SECTION VISUELLE -->
+    <section class="urgence-hero text-center my-4">
+        <div style="background: #1f2937; padding: 2rem; border-radius: 8px; border: 1px dashed #4b5563;">
+            <span style="font-size: 3rem;">🧬</span>
+            <p style="color: #9ca3af; margin-top: 0.5rem; font-weight: bold;">Odeur détruite à 100% (Enzymes)</p>
+        </div>
+    </section>
+
+    <!-- CONTENU PRINCIPAL -->
+    <section class="urgence-content container">
+        <div
+            style="background: rgba(239, 68, 68, 0.15); border-left: 4px solid var(--urgence-red); padding: 1rem; margin-bottom: 2rem; border-radius: 0 8px 8px 0;">
+            <p><strong>⚠️ {{ .Params.urgence.sous_titre }}</strong></p>
+        </div>
+
+        <div style="line-height: 1.6; color: #e5e7eb;">
+            {{ .Content }}
+        </div>
+
+        <!-- ZONE DE PRIX -->
+        <div
+            style="background: #1f2937; border: 2px solid #374151; border-radius: 16px; text-align: center; padding: 2rem; margin: 2rem 0;">
+            <span style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: #9ca3af;">Forfait
+                Sauvetage</span>
+            <div style="font-size: 4rem; font-weight: 900; line-height: 1; margin: 0.5rem 0;">{{ .Params.urgence.prix }}
+                €</div>
+            <span style="color: #9ca3af; font-size: 0.9rem;">déplacement inclus</span>
+        </div>
+    </section>
+
+    <!-- STICKY FOOTER -->
+    <div class="sticky-sos-bar">
+        <a href="tel:+33614031995" class="sos-btn">
+            <span>SAUVER MA VOITURE</span>
+            <span>📞</span>
+        </a>
+    </div>
+
+</div>
+{{ end }}
