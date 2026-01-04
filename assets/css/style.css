@@ -1,0 +1,522 @@
+:root {
+  /* Typographie */
+  --font-family-heading: 'Poppins', sans-serif;
+  --font-family-body: 'Roboto', sans-serif;
+
+  /* Palette de couleurs modernisée */
+  --color-dark: #0f172a;       /* Bleu nuit très sombre (plus élégant que le noir pur) */
+  --color-text: #334155;       /* Gris ardoise pour le texte (moins fatiguant) */
+  --color-text-light: #64748b; /* Pour les sous-titres */
+
+  /* Couleur Accent : Un bleu plus vibrant mais accessible sur fond clair */
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+
+  --color-background: #f8fafc; /* Fond très légèrement bleuté/gris */
+  --color-surface: #ffffff;
+  --color-white: #ffffff;
+
+  /* Espacements fluides */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+
+  /* Ombres modernes (douces et diffusées) */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  --border-radius: 16px;
+  --container-width: 1100px;
+}
+
+/* Reset & Base */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-family-body);
+  margin: 0;
+  background-color: var(--color-background);
+  /* Suppression du motif SVG daté pour un look plus clean */
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typographie fluide */
+h1, h2, h3, .logo-main {
+  font-family: var(--font-family-heading);
+  color: var(--color-dark);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.hero-text h1 {
+  font-family: 'Inter', sans-serif; /* New font */
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Subtle shadow */
+  
+  /* Effet dégradé sur le texte */
+  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Fallback pour vieux navigateurs */
+  color: var(--color-dark); 
+}
+
+.hero {
+  position: relative;
+  /* Ajoute une forme douce en arrière-plan */
+  background: radial-gradient(circle at top right, #e0e7ff 0%, transparent 40%);
+  padding: 2rem 0;
+  border-radius: var(--border-radius);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Petit soulignement stylé pour les H2 */
+section h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-accent);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+p { margin-bottom: 1.5rem; }
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+a:hover { color: var(--color-accent-hover); }
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem; /* Marges latérales de sécurité */
+}
+
+/* --- HEADER (Correction Accessibilité) --- */
+.site-header {
+  background: var(--color-dark);
+  color: var(--color-white);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo a {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-white);
+}
+
+.logo-main { font-size: 1.25rem; color: var(--color-white); }
+.logo-sub { font-size: 0.85rem; opacity: 0.8; font-weight: 400; }
+
+.main-nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: rgba(255, 255, 255, 0.85); /* Blanc cassé pour le contraste */
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.main-nav a:hover {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+/* Effet de soulignement animé au survol */
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.3s;
+}
+.main-nav a:hover::after { width: 100%; }
+
+/* --- HERO SECTION --- */
+.site-main { padding-top: 3rem; }
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  transform: rotate(1deg); /* Petit effet dynamique */
+  transition: transform 0.3s;
+}
+
+.hero-image img:hover { transform: rotate(0); }
+
+/* --- SERVICES (Cartes Modernes) --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.service-card {
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  padding: 0; /* On laisse l'image toucher les bords */
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden; /* For images to respect rounded borders */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0,0,0,0.03); /* Ultra subtle border */
+}
+
+/* The image zooms slightly on card hover */
+.service-card:hover img {
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+/* The card lifts slightly */
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: var(--color-accent); /* Small touch of color on the border */
+}
+
+/* Smooth transition for the image */
+.service-card img {
+  transition: transform 0.4s ease;
+}
+
+.service-card figure { margin: 0; }
+
+.service-card img {
+  max-width: 240px; /* Fixed max-width to control size */
+  width: 100%;     /* Responsive on smaller cards */
+  height: auto;
+  display: block;
+  margin: 1.5rem auto 1rem; /* Center and add vertical spacing */
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.service-card-text {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.service-card h3 {
+  margin-top: 0;
+  color: var(--color-accent);
+}
+
+/* --- BOUTONS (CTA) --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px; /* Pill buttons more modern */
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  color: white;
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+  color: #fff; /* White text on green */
+  font-weight: 700;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebc57;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+/* --- SECTIONS & LISTES --- */
+.list-icon {
+  color: var(--color-accent);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+.list-icon::before { content: "✓"; }
+
+/* Original ul/li styles */
+ul { padding-left: 1rem; }
+li { margin-bottom: 0.5rem; list-style: none; }
+
+/* --- AVIS CLIENTS --- */
+.avis-card {
+  background: white;
+  border: 1px solid #f1f5f9;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.avis-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.avis-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avis-stars { color: #fbbf24; } /* Jaune ambré plus lisible */
+
+/* --- INFOGRAPHIE --- */
+.infographie-container {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+  padding: 1.5rem;
+  background-color: white; /* Fond blanc pour détacher l'image du fond gris */
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.infographie-container figure {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.infographie-container img {
+  width: 100%;
+  height: auto;
+  /* C'est ici qu'on règle le problème : */
+  max-width: 500px; /* On limite la largeur maximale (ajuste ce chiffre si besoin) */
+  max-height: 80vh; /* On s'assure qu'elle ne dépasse pas 80% de la hauteur de l'écran */
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+  background: var(--color-dark);
+  color: #94a3b8;
+  padding: 3rem 0;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.site-footer a { color: var(--color-white); }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr; /* Empilement sur mobile */
+    text-align: center;
+  }
+
+  .hero-text { order: 2; }
+  .hero-image { order: 1; margin-bottom: 1rem; }
+
+  .header-inner {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .main-nav {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  h1 { font-size: 2.2rem; }
+
+  .btn { width: 100%; } /* Boutons pleine largeur sur mobile */
+}
+
+/* --- UTILITAIRES --- */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--color-dark);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 99;
+  box-shadow: var(--shadow-lg);
+}
+.back-to-top-btn.show { opacity: 1; }
+
+/* --- PAGE PROFIL --- */
+.profil-header {
+  align-items: center; /* Centre verticalement le texte par rapport à l'image */
+}
+
+.profil-image,
+.service-image {
+  flex: 1 1 300px; /* Base size for image container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-image {
+  flex-grow: 0; /* Prevent the service image container from growing */
+}
+
+.profil-image img,
+.service-image img {
+  width: 100%;
+  max-width: 380px; /* Max width for the image itself */
+  height: auto;
+  border-radius: var(--border-radius);
+  display: block;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Sur mobile, on s'assure que l'image n'est pas trop envahissante */
+ @media (max-width: 768px) {
+  .profil-image img {
+    max-width: 280px;
+  }
+}
+
+/* Sur grand écran uniquement, on inverse un bloc sur deux */
+ @media (min-width: 768px) {
+  .service-block:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  
+  /* On ajoute un peu d'espace entre le texte et l'image */
+  .service-block {
+    align-items: center; /* Centre verticalement */
+    gap: 4rem; /* Plus d'espace */
+  }
+}
+
+/* Cible les listes dans les sections de contenu, mais pas dans le menu */
+.site-main ul {
+  list-style: none; /* Enlève les puces par défaut */
+  padding-left: 0;
+}
+
+.site-main ul li {
+  position: relative;
+  padding-left: 2rem; /* Espace pour l'icône */
+  margin-bottom: 0.8rem;
+}
+
+/* Création de la puce personnalisée */
+.site-main ul li::before {
+  content: '✓'; /* Caractère check */
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-accent); /* Bleu */
+  font-weight: 900;
+  font-size: 1.1rem;
+  background-color: #eff6ff; /* Fond bleu très clair */
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}

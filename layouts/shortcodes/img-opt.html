@@ -1,0 +1,23 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $class := .Get "class" | default "" }}
+
+{{ $image := resources.Get $src }}
+
+{{ if $image }}
+<figure class="image-container {{ $class }}">
+  <img 
+    src="{{ $image.RelPermalink }}" 
+    alt="{{ $alt }}" 
+    loading="lazy"
+    class="img-fluid"
+  >
+  {{ with .Get "caption" }}
+    <figcaption>{{ . }}</figcaption>
+  {{ end }}
+</figure>
+{{ else }}
+  <div class="image-error">
+    <p>Image non trouvée : {{ $src }}</p>
+  </div>
+{{ end }}

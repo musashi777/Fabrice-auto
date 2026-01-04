@@ -1,0 +1,42 @@
+baseURL = "/"
+languageCode = "fr-fr"
+title = "Fabrice Auto"
+defaultContentLanguage = "fr"
+
+# Paramètres du site
+[params]
+  author = "Fabrice Jouit"
+  description = "Nettoyage intérieur, rénovation de phares et remise en beauté esthétique automobile à domicile sur Marseille."
+  phone = "06 14 03 19 95"
+  email = "fabjouit@gmail.com"
+  # Couleur principale pour le navigateur mobile
+  themeColor = "#111827"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+# Menu Dynamique
+[[menu.main]]
+  name = "Accueil"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  name = "Profil"
+  url = "/profil/"
+  weight = 20
+
+[[menu.main]]
+  name = "Services"
+  url = "/services/"
+  weight = 30
+
+[[menu.main]]
+  name = "Articles"
+  url = "/articles/"
+  weight = 40
+
+[[menu.main]]
+  name = "Contact"
+  url = "/contact/"
+  weight = 50

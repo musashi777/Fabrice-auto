@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h3>{{ .Site.Title }}</h3>
+        <p>Nettoyage intérieur et rénovation esthétique automobile à domicile sur Marseille et ses environs.</p>
+      </div>
+      
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>
+          <a href="tel:{{ replace .Site.Params.phone " " "" }}">{{ .Site.Params.phone }}</a><br>
+          <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+        </p>
+      </div>
+      
+      <div class="footer-legal">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="{{ "mentions-legales/" | relURL }}">Mentions légales</a></li>
+          <li><a href="{{ "politique-confidentialite/" | relURL }}">Politique de confidentialité</a></li>
+          <li><a href="#" class="coming-soon">CGV (bientôt disponible)</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-social">
+        <h4>Suivez-nous</h4>
+        <div class="social-links">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <span class="icon-facebook"></span>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <span class="icon-instagram"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }} - Tous droits réservés</p>
+    </div>
+  </div>
+</footer>
