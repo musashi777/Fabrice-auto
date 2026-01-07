@@ -33,7 +33,8 @@
 
         <div class="form-group">
           <label for="message">Message complémentaire</label>
-          <textarea id="message" name="message" rows="3" placeholder="Informations supplémentaires sur votre véhicule ou vos besoins..."></textarea>
+          <textarea id="message" name="message" rows="3"
+            placeholder="Informations supplémentaires sur votre véhicule ou vos besoins..."></textarea>
         </div>
 
         <button type="button" class="btn btn-primary next-step" data-next="step2">Suivant →</button>
@@ -179,7 +180,8 @@
           <button type="button" class="btn btn-secondary prev-step" data-prev="step2">← Précédent</button>
           <button type="submit" class="btn btn-success" id="submit-devis">
             <span class="submit-text">Envoyer la demande</span>
-            <span class="loading-spinner" style="display: none;">⏳</span>
+            <span class="loading-spinner" style="display: none;"><i class="fa-solid fa-spinner fa-spin"
+                aria-hidden="true"></i></span>
           </button>
         </div>
       </div>
@@ -187,25 +189,26 @@
       <!-- Étape 4 : Confirmation et réservation -->
       <div class="form-step" id="step4">
         <div class="confirmation-message">
-          <div class="confirmation-icon">✅</div>
+          <div class="confirmation-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></div>
           <h3>Demande envoyée avec succès !</h3>
           <p>Votre demande de devis a bien été enregistrée.</p>
           <p><strong>Référence : <span id="reference-number">FA-{{ now.Unix }}</span></strong></p>
           <p>Fabrice vous contactera dans les 24 heures pour finaliser votre devis.</p>
 
           <div class="reservation-options">
-            <h4>📅 Souhaitez-vous réserver votre créneau maintenant ?</h4>
+            <h4><i class="fa-regular fa-calendar" aria-hidden="true"></i> Souhaitez-vous réserver votre créneau
+              maintenant ?</h4>
             <p>Profitez de notre système de réservation en ligne pour planifier votre intervention immédiatement.</p>
 
             <div class="reservation-buttons">
               <button type="button" class="btn btn-success btn-lg" id="reserver-maintenant">
-                <span class="btn-icon">📅</span>
+                <span class="btn-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span>
                 <span class="btn-text">Réserver maintenant</span>
                 <span class="btn-subtext">Choisir date & heure</span>
               </button>
 
               <button type="button" class="btn btn-outline-primary btn-lg" id="reserver-plus-tard">
-                <span class="btn-icon">💾</span>
+                <span class="btn-icon"><i class="fa-regular fa-floppy-disk" aria-hidden="true"></i></span>
                 <span class="btn-text">Réserver plus tard</span>
                 <span class="btn-subtext">Conserver ma référence</span>
               </button>
@@ -213,19 +216,19 @@
 
             <div class="reservation-benefits">
               <div class="benefit">
-                <span class="benefit-icon">⏱️</span>
+                <span class="benefit-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
                 <span class="benefit-text">Créneaux en temps réel</span>
               </div>
               <div class="benefit">
-                <span class="benefit-icon">📱</span>
+                <span class="benefit-icon"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i></span>
                 <span class="benefit-text">Confirmation SMS/Email</span>
               </div>
               <div class="benefit">
-                <span class="benefit-icon">🔄</span>
+                <span class="benefit-icon"><i class="fa-solid fa-rotate" aria-hidden="true"></i></span>
                 <span class="benefit-text">Annulation gratuite 24h</span>
               </div>
               <div class="benefit">
-                <span class="benefit-icon">📍</span>
+                <span class="benefit-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
                 <span class="benefit-text">Service à domicile</span>
               </div>
             </div>
@@ -237,10 +240,10 @@
             </p>
             <div class="contact-options">
               <a href="tel:+33614031995" class="btn btn-sm btn-outline-secondary">
-                📞 06 14 03 19 95
+                <i class="fa-solid fa-phone" aria-hidden="true"></i> 06 14 03 19 95
               </a>
               <a href="https://wa.me/33614031995" class="btn btn-sm btn-outline-success">
-                💬 WhatsApp
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp
               </a>
             </div>
           </div>

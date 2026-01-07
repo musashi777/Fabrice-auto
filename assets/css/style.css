@@ -3,21 +3,27 @@
   --font-family: 'Inter', sans-serif;
 
   /* Palette de couleurs professionnelle "propre" - Phase 1 */
-  --color-dark: #1e293b;       /* Bleu marine foncé pour crédibilité */
-  --color-text: #334155;       /* Gris ardoise pour le texte */
-  --color-text-light: #475569; /* Pour les sous-titres */
+  --color-dark: #1e293b;
+  /* Bleu marine foncé pour crédibilité */
+  --color-text: #334155;
+  /* Gris ardoise pour le texte */
+  --color-text-light: #475569;
+  /* Pour les sous-titres */
 
   /* Couleur Accent : Bleu signature professionnel */
-  --color-accent: #1e3a8a;     /* Bleu marine pour crédibilité technique */
+  --color-accent: #1e3a8a;
+  /* Bleu marine pour crédibilité technique */
   --color-accent-hover: #1e40af;
 
   /* Couleurs de fond */
-  --color-background: #f8fafc; /* Fond très légèrement bleuté */
+  --color-background: #f8fafc;
+  /* Fond très légèrement bleuté */
   --color-surface: #ffffff;
   --color-white: #ffffff;
 
   /* Nouvelle couleur : Turquoise pour fraîcheur */
-  --color-fresh: #0d9488;      /* Turquoise pour évoquer la propreté/fraîcheur */
+  --color-fresh: #0d9488;
+  /* Turquoise pour évoquer la propreté/fraîcheur */
 
   /* Espacements fluides */
   --spacing-xs: 0.5rem;
@@ -36,7 +42,11 @@
 }
 
 /* Reset & Base */
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   font-family: var(--font-family);
@@ -52,7 +62,12 @@ body {
 }
 
 /* Amélioration de la lisibilité du texte */
-p, li, .hero-subtitle, .service-card-text, .avis-card, .gallery-caption p {
+p,
+li,
+.hero-subtitle,
+.service-card-text,
+.avis-card,
+.gallery-caption p {
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--color-text);
@@ -60,7 +75,12 @@ p, li, .hero-subtitle, .service-card-text, .avis-card, .gallery-caption p {
 }
 
 /* Amélioration du contraste pour les titres - Phase 2 */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--color-dark);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -72,7 +92,8 @@ h1, h2, h3, h4, h5, h6 {
 a {
   color: var(--color-accent);
   text-decoration: none;
-  font-weight: 600; /* Plus épais pour meilleure lisibilité */
+  font-weight: 600;
+  /* Plus épais pour meilleure lisibilité */
   transition: color 0.2s, outline 0.2s, text-decoration 0.2s;
 }
 
@@ -90,7 +111,10 @@ a:focus-visible {
 }
 
 /* Typographie unifiée - Phase 1 */
-h1, h2, h3, .logo-main {
+h1,
+h2,
+h3,
+.logo-main {
   font-family: var(--font-family);
   color: var(--color-dark);
   line-height: 1.2;
@@ -105,7 +129,7 @@ h1, h2, h3, .logo-main {
   margin-bottom: var(--spacing-sm);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 
   /* Effet dégradé amélioré avec nouvelle palette */
   background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-accent) 100%);
@@ -149,7 +173,9 @@ h3 {
   margin-bottom: 0.75rem;
 }
 
-p { margin-bottom: 1.5rem; }
+p {
+  margin-bottom: 1.5rem;
+}
 
 a {
   color: var(--color-accent);
@@ -158,7 +184,9 @@ a {
   transition: color 0.2s, outline 0.2s;
 }
 
-a:hover { color: var(--color-accent-hover); }
+a:hover {
+  color: var(--color-accent-hover);
+}
 
 /* États de focus pour l'accessibilité clavier */
 a:focus-visible {
@@ -170,7 +198,8 @@ a:focus-visible {
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 1.5rem; /* Marges latérales de sécurité */
+  padding: 0 1.5rem;
+  /* Marges latérales de sécurité */
 }
 
 /* --- HEADER (Correction Accessibilité) --- */
@@ -181,7 +210,7 @@ a:focus-visible {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header-inner {
@@ -197,8 +226,16 @@ a:focus-visible {
   color: var(--color-white);
 }
 
-.logo-main { font-size: 1.25rem; color: var(--color-white); }
-.logo-sub { font-size: 0.85rem; opacity: 0.8; font-weight: 400; }
+.logo-main {
+  font-size: 1.25rem;
+  color: var(--color-white);
+}
+
+.logo-sub {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
 
 .main-nav {
   display: flex;
@@ -208,7 +245,8 @@ a:focus-visible {
 }
 
 .main-nav a {
-  color: var(--color-white); /* Blanc pur pour un meilleur contraste */
+  color: var(--color-white);
+  /* Blanc pur pour un meilleur contraste */
   font-size: 0.95rem;
   padding: 0.5rem 0;
   position: relative;
@@ -237,7 +275,10 @@ a:focus-visible {
   background: var(--color-accent);
   transition: width 0.3s;
 }
-.main-nav a:hover::after { width: 100%; }
+
+.main-nav a:hover::after {
+  width: 100%;
+}
 
 /* Style spécial pour le lien Réservation - Contraste amélioré */
 .main-nav .nav-reservation {
@@ -324,7 +365,9 @@ a:focus-visible {
 }
 
 /* --- HERO SECTION --- */
-.site-main { padding-top: 3rem; }
+.site-main {
+  padding-top: 3rem;
+}
 
 .hero-inner {
   display: grid;
@@ -345,11 +388,14 @@ a:focus-visible {
   height: auto;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-lg);
-  transform: rotate(1deg); /* Petit effet dynamique */
+  transform: rotate(1deg);
+  /* Petit effet dynamique */
   transition: transform 0.3s;
 }
 
-.hero-image img:hover { transform: rotate(0); }
+.hero-image img:hover {
+  transform: rotate(0);
+}
 
 /* --- SERVICES (Cartes Modernes) --- */
 .services-grid {
@@ -362,13 +408,16 @@ a:focus-visible {
 .service-card {
   background: var(--color-surface);
   border-radius: var(--border-radius);
-  padding: 0; /* On laisse l'image toucher les bords */
+  padding: 0;
+  /* On laisse l'image toucher les bords */
   box-shadow: var(--shadow-md);
   transition: transform 0.3s, box-shadow 0.3s;
-  overflow: hidden; /* For images to respect rounded borders */
+  overflow: hidden;
+  /* For images to respect rounded borders */
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(0,0,0,0.03); /* Ultra subtle border */
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  /* Ultra subtle border */
 }
 
 /* The image zooms slightly on card hover */
@@ -381,7 +430,8 @@ a:focus-visible {
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-color: var(--color-accent); /* Small touch of color on the border */
+  border-color: var(--color-accent);
+  /* Small touch of color on the border */
 }
 
 /* Smooth transition for the image */
@@ -389,14 +439,19 @@ a:focus-visible {
   transition: transform 0.4s ease;
 }
 
-.service-card figure { margin: 0; }
+.service-card figure {
+  margin: 0;
+}
 
 .service-card img {
-  max-width: 240px; /* Fixed max-width to control size */
-  width: 100%;     /* Responsive on smaller cards */
+  max-width: 240px;
+  /* Fixed max-width to control size */
+  width: 100%;
+  /* Responsive on smaller cards */
   height: auto;
   display: block;
-  margin: 1.5rem auto 1rem; /* Center and add vertical spacing */
+  margin: 1.5rem auto 1rem;
+  /* Center and add vertical spacing */
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-sm);
 }
@@ -417,7 +472,8 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 0.8rem 1.5rem;
-  border-radius: 50px; /* Pill buttons more modern */
+  border-radius: 50px;
+  /* Pill buttons more modern */
   font-weight: 600;
   text-align: center;
   transition: all 0.2s;
@@ -450,7 +506,7 @@ a:focus-visible {
 }
 
 .btn-whatsapp {
-  background-color: #25D366;
+  background-color: #128C7E;
   color: #fff;
   font-weight: 700;
   display: inline-flex;
@@ -462,7 +518,7 @@ a:focus-visible {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);
+  box-shadow: 0 4px 6px rgba(18, 140, 126, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -479,11 +535,11 @@ a:focus-visible {
 }
 
 .btn-whatsapp:hover {
-  background-color: #128C7E;
+  background-color: #0d6e63;
   color: #fff;
   text-decoration: none;
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 6px 20px rgba(18, 140, 126, 0.4);
 }
 
 .btn-whatsapp:hover::before {
@@ -505,9 +561,11 @@ a:focus-visible {
   0% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
   }
+
   70% {
     box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
@@ -519,47 +577,61 @@ a:focus-visible {
 
 /* --- SECTIONS & LISTES --- */
 .list-icon {
-  color: var(--color-accent);
-  font-weight: bold;
-  margin-right: 0.5rem;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background-color: #eff6ff;
+  color: white;
+  font-weight: 900;
+  margin-right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: var(--color-accent);
   border-radius: 50%;
-  text-align: center;
-  line-height: 24px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
 }
-.list-icon::before { content: "✓"; }
+
+.list-icon::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
 
 /* Original ul/li styles */
-ul { padding-left: 1rem; }
-li { margin-bottom: 0.5rem; list-style: none; }
+ul {
+  padding-left: 1rem;
+}
 
-/* Amélioration des icônes de liste - Phase 2 */
+li {
+  margin-bottom: 0.5rem;
+  list-style: none;
+}
+
+/* Amélioration des icônes de liste - Phase 2 avec FontAwesome */
 .site-main ul li {
-  position: relative;
-  padding-left: 2.75rem; /* Plus d'espace pour l'icône */
+  display: flex;
+  align-items: flex-start;
+  padding-left: 0;
   margin-bottom: 1rem;
 }
 
 .site-main ul li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: white; /* Contraste amélioré */
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
   font-weight: 900;
-  font-size: 1.1rem;
-  background-color: var(--color-accent); /* Utilisation de la couleur accent */
-  width: 30px;
-  height: 30px;
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+  margin-top: 0.15rem;
+  color: white;
+  font-size: 0.85rem;
+  background-color: var(--color-accent);
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
   box-shadow: 0 3px 6px rgba(30, 58, 138, 0.2);
   transition: all 0.2s ease;
 }
@@ -594,7 +666,11 @@ li { margin-bottom: 0.5rem; list-style: none; }
   object-fit: cover;
 }
 
-.avis-stars { color: #d97706; } /* Jaune plus foncé pour meilleur contraste */
+.avis-stars {
+  color: #d97706;
+}
+
+/* Jaune plus foncé pour meilleur contraste */
 
 /* --- INFOGRAPHIE --- */
 .infographie-container {
@@ -602,10 +678,11 @@ li { margin-bottom: 0.5rem; list-style: none; }
   justify-content: center;
   margin: 3rem 0;
   padding: 1.5rem;
-  background-color: white; /* Fond blanc pour détacher l'image du fond gris */
+  background-color: white;
+  /* Fond blanc pour détacher l'image du fond gris */
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .infographie-container figure {
@@ -619,8 +696,10 @@ li { margin-bottom: 0.5rem; list-style: none; }
   width: 100%;
   height: auto;
   /* C'est ici qu'on règle le problème : */
-  max-width: 500px; /* On limite la largeur maximale (ajuste ce chiffre si besoin) */
-  max-height: 80vh; /* On s'assure qu'elle ne dépasse pas 80% de la hauteur de l'écran */
+  max-width: 500px;
+  /* On limite la largeur maximale (ajuste ce chiffre si besoin) */
+  max-height: 80vh;
+  /* On s'assure qu'elle ne dépasse pas 80% de la hauteur de l'écran */
   object-fit: contain;
   border-radius: 8px;
 }
@@ -628,7 +707,8 @@ li { margin-bottom: 0.5rem; list-style: none; }
 /* --- FOOTER - Phase 2 --- */
 .site-footer {
   background: var(--color-dark);
-  color: #cbd5e1; /* Couleur plus claire pour meilleur contraste */
+  color: #cbd5e1;
+  /* Couleur plus claire pour meilleur contraste */
   padding: 3rem 0;
   margin-top: 4rem;
   text-align: center;
@@ -641,19 +721,27 @@ li { margin-bottom: 0.5rem; list-style: none; }
 }
 
 .site-footer a:hover {
-  color: var(--color-fresh); /* Utilisation de la couleur fraîche pour les survols */
+  color: var(--color-fresh);
+  /* Utilisation de la couleur fraîche pour les survols */
   text-decoration: underline;
 }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .hero-inner {
-    grid-template-columns: 1fr; /* Empilement sur mobile */
+    grid-template-columns: 1fr;
+    /* Empilement sur mobile */
     text-align: center;
   }
 
-  .hero-text { order: 2; }
-  .hero-image { order: 1; margin-bottom: 1rem; }
+  .hero-text {
+    order: 2;
+  }
+
+  .hero-image {
+    order: 1;
+    margin-bottom: 1rem;
+  }
 
   .header-inner {
     flex-direction: column;
@@ -665,9 +753,15 @@ li { margin-bottom: 0.5rem; list-style: none; }
     gap: 1rem;
   }
 
-  h1 { font-size: 2.2rem; }
+  h1 {
+    font-size: 2.2rem;
+  }
 
-  .btn { width: 100%; } /* Boutons pleine largeur sur mobile */
+  .btn {
+    width: 100%;
+  }
+
+  /* Boutons pleine largeur sur mobile */
 }
 
 /* --- UTILITAIRES --- */
@@ -676,6 +770,7 @@ li { margin-bottom: 0.5rem; list-style: none; }
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -698,7 +793,10 @@ li { margin-bottom: 0.5rem; list-style: none; }
   z-index: 99;
   box-shadow: var(--shadow-lg);
 }
-.back-to-top-btn.show { opacity: 1; }
+
+.back-to-top-btn.show {
+  opacity: 1;
+}
 
 /* --- PAGE PROFIL - Phase 2 --- */
 .profil-header {
@@ -726,7 +824,8 @@ li { margin-bottom: 0.5rem; list-style: none; }
   border-radius: var(--border-radius);
   display: block;
   box-shadow: var(--shadow-lg);
-  border: 4px solid white; /* Bordure blanche pour détacher l'image */
+  border: 4px solid white;
+  /* Bordure blanche pour détacher l'image */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -737,22 +836,24 @@ li { margin-bottom: 0.5rem; list-style: none; }
 }
 
 /* Sur mobile, on s'assure que l'image n'est pas trop envahissante */
- @media (max-width: 768px) {
+@media (max-width: 768px) {
   .profil-image img {
     max-width: 280px;
   }
 }
 
 /* Sur grand écran uniquement, on inverse un bloc sur deux */
- @media (min-width: 768px) {
+@media (min-width: 768px) {
   .service-block:nth-child(even) {
     flex-direction: row-reverse;
   }
 
   /* On ajoute un peu d'espace entre le texte et l'image */
   .service-block {
-    align-items: center; /* Centre verticalement */
-    gap: 4rem; /* Plus d'espace */
+    align-items: center;
+    /* Centre verticalement */
+    gap: 4rem;
+    /* Plus d'espace */
   }
 }
 
@@ -799,8 +900,15 @@ li { margin-bottom: 0.5rem; list-style: none; }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Grille de formulaire */
@@ -844,8 +952,8 @@ li { margin-bottom: 0.5rem; list-style: none; }
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-.form-group input[required] + label::after,
-.form-group select[required] + label::after {
+.form-group input[required]+label::after,
+.form-group select[required]+label::after {
   content: " *";
   color: #e74c3c;
 }
@@ -887,13 +995,15 @@ li { margin-bottom: 0.5rem; list-style: none; }
   flex-shrink: 0;
 }
 
-.checkbox-label input[type="checkbox"]:checked + .checkmark {
+.checkbox-label input[type="checkbox"]:checked+.checkmark {
   background: #3498db;
   border-color: #3498db;
 }
 
-.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
-  content: "✓";
+.checkbox-label input[type="checkbox"]:checked+.checkmark::after {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
   position: absolute;
   color: white;
   font-size: 14px;
@@ -1027,9 +1137,22 @@ li { margin-bottom: 0.5rem; list-style: none; }
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-  40% {transform: translateY(-20px);}
-  60% {transform: translateY(-10px);}
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-20px);
+  }
+
+  60% {
+    transform: translateY(-10px);
+  }
 }
 
 .confirmation-message h3 {
@@ -1154,8 +1277,13 @@ li { margin-bottom: 0.5rem; list-style: none; }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Consentement */
@@ -1225,7 +1353,8 @@ li { margin-bottom: 0.5rem; list-style: none; }
   border-radius: 10px;
   text-align: center;
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* Compatibilité Safari */
+  -webkit-backdrop-filter: blur(10px);
+  /* Compatibilité Safari */
 }
 
 .step-number {
@@ -1260,13 +1389,17 @@ li { margin-bottom: 0.5rem; list-style: none; }
   font-size: 1.2rem;
 }
 
-.availability-list, .duration-list, .advantages-list {
+.availability-list,
+.duration-list,
+.advantages-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.availability-list li, .duration-list li, .advantages-list li {
+.availability-list li,
+.duration-list li,
+.advantages-list li {
   padding: 0.5rem 0;
   border-bottom: 1px solid #e9ecef;
 }
@@ -1308,7 +1441,7 @@ li { margin-bottom: 0.5rem; list-style: none; }
   background: white;
   border-radius: 10px;
   padding: 2rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin: 2rem 0;
 }
 
@@ -1427,11 +1560,13 @@ li { margin-bottom: 0.5rem; list-style: none; }
 }
 
 .before-image .image-label {
-  background: #ef4444; /* Rouge pour "Avant" */
+  background: #ef4444;
+  /* Rouge pour "Avant" */
 }
 
 .after-image .image-label {
-  background: #10b981; /* Vert pour "Après" */
+  background: #10b981;
+  /* Vert pour "Après" */
 }
 
 .gallery-caption {
