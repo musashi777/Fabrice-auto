@@ -2,6 +2,7 @@ baseURL = "/"
 languageCode = "fr-fr"
 title = "Fabrice Auto"
 defaultContentLanguage = "fr"
+enableRobotsTXT = true
 
 # Paramètres du site
 [params]
